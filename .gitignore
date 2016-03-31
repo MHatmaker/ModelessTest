@@ -1,6 +1,8 @@
+public/javascripts/domReady.js
+public/javascripts/require.js
+
 bin*
 bin/*
 node_mudules*
 node_modules/*
 public/images*
-

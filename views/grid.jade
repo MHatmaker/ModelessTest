@@ -1,11 +1,13 @@
 extends index
 
 block content
-    div(class="container")
-        h3 Mixed: mobile, tablet, and desktop
-        p
-
     div
+        div(ng-controller="TopRowCtrl", ng-click="onExpandClicked()")
+            span(style='cursor: pointer; cursor: hand;')
+                figure(style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;")
+                    img(src="../images/Expand.png", id='ExpandSumImgId', class="expandoimage", style="margin: 0.01em 0.5em  0.01em  0.05em;")
+                    figcaption(class="btn", style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;font-weight: 800;") Expand/Shrink Summary Master Website Options
+
         div(class="row")
             div(class="col-xs-12 col-sm-8 col-md-8 col-lg-8") .col-xs-12 .col-sm-8 .col-md-8 .col-lg-8
             div(class="col-xs-6 col-sm-4 col-md-4 col-lg-4") .col-xs-6 .col-sm-4 .col-md-4 .col-lg-4

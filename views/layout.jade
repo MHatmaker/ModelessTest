@@ -9,6 +9,8 @@ html(style="height:100%;width:100%;")
             link(rel="stylesheet", href="/stylesheets/style.css")
             link(rel="stylesheet", href="/stylesheets/grid.css")
         block scriptsblock
-            script(src="/javascripts/script.js")
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.4/ui-bootstrap-tpls.js')
+            script(data-main="/javascripts/script.js", src="/javascripts/require.js")
     body(style="width:100%")
         block content
