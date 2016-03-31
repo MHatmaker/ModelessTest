@@ -26,3 +26,8 @@ hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+.gangsterimg {
+    background-image: url(../images/gangsters.png)
+    background-size: 100% 100%;
+}

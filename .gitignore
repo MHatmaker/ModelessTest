@@ -2,4 +2,5 @@ bin*
 bin/*
 node_mudules*
 node_modules/*
+public/images*
 
