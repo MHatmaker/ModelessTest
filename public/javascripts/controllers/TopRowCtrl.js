@@ -15,9 +15,17 @@
             $scope.data = {
                 expanded : true
             };
+            // $scope.row2Showing = 'inline-block';
 
             $scope.onExpandClicked = function () {
-                alert("Expand or Collapse");
+                $scope.$parent.onExpandClicked();
+                // if ($scope.data.expanded === true) {
+                //     $scope.data.expanded = false;
+                //     $scope.row2Showing = 'none';
+                // } else {
+                //     $scope.data.expanded = true;
+                //     $scope.row2Showing = 'inline-block';
+                // }
             };
         }
 

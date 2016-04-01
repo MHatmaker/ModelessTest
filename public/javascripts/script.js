@@ -44,14 +44,18 @@
                 ]
         });
         require([
-            'controllers/TopRowCtrl'
-        ], function (TopRowCtrl) {
+            'controllers/TopRowCtrl',
+            'controllers/Row2Ctrl',
+            'controllers/SummaryCtrl'
+        ], function (TopRowCtrl, Row2Ctrl, SummaryCtrl) {
             require(['javascripts/domReady!'], function (doc) {
                 //This function is called once the DOM is ready,
                 //notice the value for 'domReady!' is the current
                 //document.
                 var App = angular.module("app", ['ui.bootstrap']);
                 TopRowCtrl.start(App);
+                Row2Ctrl.start(App);
+                SummaryCtrl.start(App);
                 angular.bootstrap(document.body, ['app']);
             });
             return;
