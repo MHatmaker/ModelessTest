@@ -46,8 +46,12 @@
         require([
             'controllers/TopRowCtrl',
             'controllers/Row2Ctrl',
+            'controllers/SiteBodyCtrl',
+            'controllers/LeftColCtrl',
+            'controllers/MapColCtrl',
+            'controllers/RightColCtrl',
             'controllers/SummaryCtrl'
-        ], function (TopRowCtrl, Row2Ctrl, SummaryCtrl) {
+        ], function (TopRowCtrl, Row2Ctrl, SiteBodyCtrl, LeftColCtrl, MapColCtrl, RightColCtrl, SummaryCtrl) {
             require(['javascripts/domReady!'], function (doc) {
                 //This function is called once the DOM is ready,
                 //notice the value for 'domReady!' is the current
@@ -55,7 +59,12 @@
                 var App = angular.module("app", ['ui.bootstrap']);
                 TopRowCtrl.start(App);
                 Row2Ctrl.start(App);
+                SiteBodyCtrl.start(App);
+                LeftColCtrl.start(App);
+                MapColCtrl.start(App);
+                RightColCtrl.start(App);
                 SummaryCtrl.start(App);
+
                 angular.bootstrap(document.body, ['app']);
             });
             return;

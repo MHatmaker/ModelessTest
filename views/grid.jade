@@ -18,8 +18,8 @@ block content
             div(class="col-xs-6 col-sm-4") .col-xs-6 .col-sm-4
 
     div
-        div(class="row")
-            div(class="col-xs-12 col-sm-6 col-md-4")
+        div(class="row", ng-controller="SiteBodyCtrl")
+            div(class="col-xs-12 col-sm-6 col-md-4", ng-controller="LeftColCtrl", style="display:{{$parent.leftColShowing}}")
                 p
                 Blowfish librantur in se quatuor, quinquies maior quam normalis, et quare? Quare id faciam? Ut terrorem facit, qui quid. Terrent! Ut alter, scarier pisces agminis off. Et quod tu es? Vos blowfish. Tu iustus in omnibus visio. Vides ... suus ' suus 'non aliud aerem. Nunc ... qui cum partibus blowfish Isai? Tu damnare ius. Vos blowfish. Dicere iterum. Dicere illam quasi velis eam. Es BLOWFISH!
 
@@ -29,11 +29,15 @@ block content
 
                 Mauris a nunc occideritis me rectum. Videtur quod Ive facillimum, qui fecit vos. Potes me interficere, sine testibus et tunc manere in pauci weeks vel mensis vestigia Isai Pinkman et vos quoque illum occidere. Exercitium inutili option A. Videtur mihi quod autem est.
 
-            div(class="col-xs-12 col-sm-6 col-md-4")
+            div(class="col-xs-12 col-sm-6 col-md-4", ng-controller="MapColCtrl", ng-click="onExpandClicked()")
+                figure(style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;")
+                    img(src="../images/Expand.png", id='ExpandSumImgId', class="expandoimage", style="margin: 0.01em 0.5em  0.01em  0.05em;")
+                    figcaption(class="btn", style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;font-weight: 800;") Expand/Shrink Map
+
                 div(class="card", style="overflow-x: auto; overflow-y: auto;")
                     img(class="card-img-top", src="../images/ChiMap.png")
 
-            div(class="col-xs-12 col-sm-6 col-md-4")
+            div(class="col-xs-12 col-sm-6 col-md-4", ng-controller="RightColCtrl", style="display:{{$parent.rightColShowing}}")
                 p
                 Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
 
