@@ -35,7 +35,7 @@ block content
                         button(class="btn btn-primary", ng-click="toggleView()", style="margin-top: 0.01em;") Toggle Visible
 
                 div(class="row")
-                    div(ng-controller="MapViewCtrl")
+                    div(ng-controller="MapViewCtrl", id="MapViewCtrlId")
                         div(class="card", style="overflow-x: auto; overflow-y: auto;")
                             img(class="card-img-top", src="../images/ChiMap.png")
             ng-pop-up(option="ngPopupOption")

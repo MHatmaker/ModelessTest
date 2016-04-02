@@ -11,8 +11,12 @@
 
         function SiteBodyCtrl($scope) {
             console.log("in SiteBodyCtrl");
-            var sbcwidth = document.getElementById('idSiteBodyCtrl').offsetWidth - 10,
-                sbcheight = document.getElementById('idSiteBodyCtrl').offsetHeight - 10;
+            var sbc = document.getElementById('idSiteBodyCtrl'),
+                sbcwidth = sbc.offsetWidth - 20,
+                sbcheight = sbc.offsetHeight - 20,
+                mapview = document.getElementById('MapViewCtrlId'),
+                mpvtop = mapview.offsetTop + 10,
+                mpvleft = mapview.offsetLeft + 10;
 
             $scope.data = {
                 expanded : false
@@ -49,7 +53,7 @@
                 title: "MapLinkr Dialog",
                 resizable:true,
                 draggable: true,
-                position: { top : 5, left : 5},
+                position: { top : mpvtop, left : mpvleft},
                 onOpen : function(){},
                 onClose  : function(){},
                 onDragStart : function(){},
