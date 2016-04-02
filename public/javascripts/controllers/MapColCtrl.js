@@ -18,7 +18,11 @@
 
             $scope.onExpandClicked = function () {
                 $scope.$parent.onExpandClicked();
-            };              
+            };
+
+            $scope.toggleView = function () {
+                $scope.$parent.toggleView();
+            };
         }
 
         function init(App) {

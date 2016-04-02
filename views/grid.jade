@@ -20,30 +20,25 @@ block content
 
     div
         div(class="row", ng-controller="SiteBodyCtrl")
+            ng-pop-up(option="ngPopupOption")
             div(class="col-xs-12 col-sm-6 col-md-4", ng-controller="LeftColCtrl", style="display:{{$parent.leftColShowing}}")
-                p
-                Blowfish librantur in se quatuor, quinquies maior quam normalis, et quare? Quare id faciam? Ut terrorem facit, qui quid. Terrent! Ut alter, scarier pisces agminis off. Et quod tu es? Vos blowfish. Tu iustus in omnibus visio. Vides ... suus ' suus 'non aliud aerem. Nunc ... qui cum partibus blowfish Isai? Tu damnare ius. Vos blowfish. Dicere iterum. Dicere illam quasi velis eam. Es BLOWFISH!
+                include stuffing.jade
+                include stuffing.jade
 
-                Ut sibi fuerat socius sagittis. Ego intervenerit. Vere quia a te nuper iratus occidit illos undecim annorum puer. Deinde, si hoc forte qui fuit imperavit.
+            div(ng-controller="MapColCtrl", class="{{mapColDef}}")
+                div(class="row")
+                    div(class="col-xs-6")
+                        figure(style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;", ng-click="onExpandClicked()")
+                            img(src="../images/Expand.png", id='ExpandSumImgId', class="expandoimage", style="margin: 0.01em 0.5em  0.01em  0.05em;")
+                            figcaption(class="btn", style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;font-weight: 800;") Expand/Shrink Map
+                    div(class="col-xs-6")
+                        button(class="btn btn-primary", ng-click="toggleView()", style="margin-top: 1em;") Toggle Visible
 
-                Quod satis pecuniae sempiternum. Ut sciat oportet motum. Nunquam invenies eum. Hic de tabula. Ego vivere, ut debui, et nunc fiant. Istuc quod opus non est. Lorem ipsum occurrebat pragmaticam semper ut, si quis ita velim tibi bene recognoscere. Quorum duo te mihi videtur.
-
-                Mauris a nunc occideritis me rectum. Videtur quod Ive facillimum, qui fecit vos. Potes me interficere, sine testibus et tunc manere in pauci weeks vel mensis vestigia Isai Pinkman et vos quoque illum occidere. Exercitium inutili option A. Videtur mihi quod autem est.
-
-            div(class="{{mapColDef}}", ng-controller="MapColCtrl", ng-click="onExpandClicked()")
-                figure(style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;")
-                    img(src="../images/Expand.png", id='ExpandSumImgId', class="expandoimage", style="margin: 0.01em 0.5em  0.01em  0.05em;")
-                    figcaption(class="btn", style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;font-weight: 800;") Expand/Shrink Map
-
-                div(class="card", style="overflow-x: auto; overflow-y: auto;")
-                    img(class="card-img-top", src="../images/ChiMap.png")
+                div(class="row")
+                    div(ng-controller="MapViewCtrl")
+                        div(class="card", style="overflow-x: auto; overflow-y: auto;")
+                            img(class="card-img-top", src="../images/ChiMap.png")
 
             div(class="col-xs-12 col-sm-6 col-md-4", ng-controller="RightColCtrl", style="display:{{$parent.rightColShowing}}")
-                p
-                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
-
-                Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.
-
-                Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.
-
-                Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.
+                include busnonsense.jade
+                include busnonsense.jade

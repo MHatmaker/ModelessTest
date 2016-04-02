@@ -49,9 +49,10 @@
             'controllers/SiteBodyCtrl',
             'controllers/LeftColCtrl',
             'controllers/MapColCtrl',
+            'controllers/MapViewCtrl',
             'controllers/RightColCtrl',
             'controllers/SummaryCtrl'
-        ], function (TopRowCtrl, Row2Ctrl, SiteBodyCtrl, LeftColCtrl, MapColCtrl, RightColCtrl, SummaryCtrl) {
+        ], function (TopRowCtrl, Row2Ctrl, SiteBodyCtrl, LeftColCtrl, MapColCtrl, MapViewCtrl, RightColCtrl, SummaryCtrl) {
             require(['javascripts/domReady!'], function (doc) {
                 //This function is called once the DOM is ready,
                 //notice the value for 'domReady!' is the current
@@ -62,6 +63,7 @@
                 SiteBodyCtrl.start(App);
                 LeftColCtrl.start(App);
                 MapColCtrl.start(App);
+                MapViewCtrl.start(App);
                 RightColCtrl.start(App);
                 SummaryCtrl.start(App);
 
