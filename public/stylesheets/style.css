@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+/* CSS used here will be applied after bootstrap.css */
+
+.modeless{
+    top:10%;
+    left:50%;
+    bottom:auto;
+    right:auto;
+    margin-left:-300px;
+}

@@ -32,13 +32,15 @@ block content
                             img(src="../images/Expand.png", id='ExpandSumImgId', class="expandoimage", style="margin: 0.01em 0.5em  0.01em  0.05em;")
                             figcaption(class="btn", style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;font-weight: 800;") Expand/Shrink Map
                     div(class="col-xs-6")
-                        button(class="btn btn-primary", ng-click="toggleView()", style="margin-top: 0.01em;") Toggle Visible
+                        button(class="btn btn-primary", data-toggle="modal", data-target="#idDialog", style="margin-top: 0.01em;") Toggle Visible
 
                 div(class="row")
                     div(ng-controller="MapViewCtrl", id="MapViewCtrlId")
                         div(class="card", style="overflow-x: auto; overflow-y: auto;")
                             img(class="card-img-top", src="../images/ChiMap.png")
-            ng-pop-up(option="ngPopupOption")
+
+
             div(class="col-xs-12 col-sm-6 col-md-4", ng-controller="RightColCtrl", style="display:{{$parent.rightColShowing}}")
                 include busnonsense.jade
                 include busnonsense.jade
+            include templates/MDialog.jade
