@@ -11,6 +11,8 @@
 
         function SiteBodyCtrl($scope) {
             console.log("in SiteBodyCtrl");
+            var sbcwidth = document.getElementById('idSiteBodyCtrl').offsetWidth - 10,
+                sbcheight = document.getElementById('idSiteBodyCtrl').offsetHeight - 10;
 
             $scope.data = {
                 expanded : false
@@ -35,14 +37,19 @@
             };
             $scope.ngPopupOption = {
                 modelName: "MapLinkrNgPopup",
-                width: 400,
-                height: 300,
+                width: sbcwidth,
+                height: sbcheight,
                 hasTitleBar:true,
-                template: '<img src="http://www.omgubuntu.co.uk/wp-content/uploads/2014/03/Forever-Shady-S.jpg" style="width:100%;height:100%;">',
+                template:
+                    '<img src="http://www.omgubuntu.co.uk/wp-content/uploads/2014/03/Forever-Shady-S.jpg" style="width:100%;height:100%;">',
+
+                // template: '<iframe style="margin:1%;height:95%;width:95%;" ' +
+                //     '<img src="http://www.omgubuntu.co.uk/wp-content/uploads/2014/03/Forever-Shady-S.jpg" style="width:100%;height:100%;">' +
+                //     '<iframe>',
                 title: "MapLinkr Dialog",
                 resizable:true,
                 draggable: true,
-                position: { top : 25, left : 30},
+                position: { top : 5, left : 5},
                 onOpen : function(){},
                 onClose  : function(){},
                 onDragStart : function(){},

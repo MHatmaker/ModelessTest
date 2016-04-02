@@ -57,7 +57,7 @@
                 //This function is called once the DOM is ready,
                 //notice the value for 'domReady!' is the current
                 //document.
-                var App = angular.module("app", ['ui.bootstrap']);
+                var App = angular.module("app", ['ui.bootstrap', "ngPopup"]);
                 TopRowCtrl.start(App);
                 Row2Ctrl.start(App);
                 SiteBodyCtrl.start(App);
