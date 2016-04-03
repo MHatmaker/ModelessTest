@@ -51,13 +51,52 @@
             'controllers/MapColCtrl',
             'controllers/MapViewCtrl',
             'controllers/RightColCtrl',
-            'controllers/SummaryCtrl'
-        ], function (TopRowCtrl, Row2Ctrl, SiteBodyCtrl, LeftColCtrl, MapColCtrl, MapViewCtrl, RightColCtrl, SummaryCtrl) {
+            'controllers/SummaryCtrl',
+            'controllers/BSColDlgCtrl'
+        ], function (TopRowCtrl, Row2Ctrl, SiteBodyCtrl, LeftColCtrl,
+            MapColCtrl, MapViewCtrl, RightColCtrl, SummaryCtrl, BSColDlgCtrl) {
             require(['javascripts/domReady!'], function (doc) {
                 //This function is called once the DOM is ready,
                 //notice the value for 'domReady!' is the current
                 //document.
-                var App = angular.module("app", ['ui.bootstrap', "ngPopup"]);
+                var App = angular.module("app", ['ngRoute', 'ui.bootstrap', 'ui.router'])
+                // var App = angular.module("app", ['ui.bootstrap']);
+
+                .config(['$routeProvider', '$locationProvider', '$urlRouterProvider', '$stateProvider',
+                        function ($routeProvider, $locationProvider, $urlRouterProvider, $stateProvider) {
+                        console.debug('App module route provider');
+
+                        $routeProvider.
+                            when('/views/partials/:id',  {
+                                templateUrl: function (params) {
+                                    console.log("when string is " + '/views/partials/:id');
+                                    console.log(" params.id : " +  params.id);
+                                    console.log("prepare to return " + '/partials/' + params.id);
+                                    return '/partials/' + params.id;
+                                },
+                                controller: App.MapCtrl,
+                                reloadOnSearch: true,
+                                disableCache: true
+                            }).
+                            when('/templates/:id',  {
+                                templateUrl: function (params) {
+                                    console.log("when string is " + '/templates/:id');
+                                    console.log(" params.id : " +  params.id);
+                                    console.log("prepare to return " + '/templates/' + params.id);
+                                    return '/templates/' + params.id;
+                                },
+                                controller: App.BSColDlgCtrl,
+                                reloadOnSearch: true
+                            }).
+                            otherwise({
+                                redirectTo: '/'
+                            });
+
+                        $locationProvider.html5Mode(true);
+                        console.debug('Here we are at the end of routeProvider logic');
+
+                    }
+                ]);
                 TopRowCtrl.start(App);
                 Row2Ctrl.start(App);
                 SiteBodyCtrl.start(App);
@@ -66,6 +105,7 @@
                 MapViewCtrl.start(App);
                 RightColCtrl.start(App);
                 SummaryCtrl.start(App);
+                BSColDlgCtrl.start(App);
 
                 angular.bootstrap(document.body, ['app']);
             });
