@@ -23,9 +23,6 @@
                 $scope.$parent.onExpandClicked();
             };
 
-            $scope.toggleView = function () {
-                $scope.$parent.toggleView();
-            };
             $scope.onShowMDialogClicked = function () {
                 console.log("onShowMDialogClicked");
                 // console.log(tmplt);
