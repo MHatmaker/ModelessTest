@@ -5,11 +5,11 @@ div(class="modeless", id="idDialog", role="dialog", aria-labelledby="dialogLabel
             div(class="modal-header")
                 button(type="button", class="close", data-dismiss="modal", aria-label="Close")
 
-            h4(class="modal-title", id="dialogLabel") Where are you?
+            h4(class="modal-title", id="dialogLabel") {{data.title}}
 
             div(class="modal-body")
-                | ...flooby
+                | {{data.guts}}
 
             div(class="modal-footer")
                 button(type="button", class="btn btn-default", ng-click="accept()") Close
-                button(type="button", class="btn btn-primary", ng-click="cancel") Cancel
+                button(type="button", class="btn btn-primary", ng-click="cancel()") Cancel

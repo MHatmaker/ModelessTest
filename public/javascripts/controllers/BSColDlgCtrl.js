@@ -29,6 +29,7 @@
             };
 
             $scope.cancel = function () {
+                console.log("on Cancel");
                 $uibModalInstance.dismiss('cancel');
             };
 
