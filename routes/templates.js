@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+console.log("add templates to router");
 
 /* GET users listing. */
 router.get('/templates', function(req, res, next) {

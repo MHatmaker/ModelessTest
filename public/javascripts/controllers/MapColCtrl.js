@@ -50,14 +50,14 @@
             };
             $scope.onShowMDialogClicked = function () {
                 console.log("onShowMDialogClicked");
-                console.log(tmplt);
+                // console.log(tmplt);
 
                 $scope.data.guts = "guts, guts, guts";
                 $scope.data.title = "yippee, a title";
 
                 var modalInstance = $uibModal.open({
-                    template : tmplt,
-                    // templateUrl : '/templates/MDialog',   // .jade will be appended
+                    // template : tmplt,
+                    templateUrl : '/templates/MDialog',   // .jade will be appended
                     controller : 'BSColDlgCtrl',
                     backdrop : 'false',
 

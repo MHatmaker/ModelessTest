@@ -1,6 +1,6 @@
 public/javascripts/domReady.js
 public/javascripts/require.js
-
+npm-debug.log
 bin*
 bin/*
 node_mudules*
