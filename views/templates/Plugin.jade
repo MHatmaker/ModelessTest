@@ -1,43 +1,41 @@
 
 div(class="modeless", id="idPlugin", role="dialog", aria-labelledby="pluginLabel", aria-hidden="true")
-
     div(class="modal-content")
         div(class="modal-header")
             button(type="button", class="close", data-dismiss="modal", aria-hidden="true", ng-click="cancel()") &times
 
         h5(class="modal-title", id="pluginLabel") {{data.title}}
         div(class="modal-body")
-            | {{data.guts}}
+            div(id="accountInfo", role="tablist", aria-multiselectable="true")
+                div(id="repeater", ng-repeat="m in data.nfos", class="ng-scope")
+                    div(class="card")
+                        div(class="card-header", role="tab", id="debtorHeader")
+                            h4(class="card-title")
+                                a(data-toggle="collapse", href="#debtorInfo", aria-expanded="false", aria-controls="debtorInfo")
+                                    | Debtor Info
 
-            div(id="accountInfo", role="tablist", aria-multiselectable="true", card in data.debtnfos track by card.filenumber")
-                div(class="card")
-                    div(class="card-header", role="tab", id="debtorHeader")
-                        h4(class="card-title")
-                            a(data-toggle="collapse", href="#debtorInfo", aria-expanded="false", aria-controls="debtorInfo")
-                                | Debtor Info
+                        div(id="debtorInfo", class="card-collapse, collapse in", role="tabpanel", aria-labelledby="debtorHeader")
+                            div(class="card-block")
+                                div(class="row")
+                                    div(class="col-sm-2 text-right") <strong>File Number</strong>
+                                    div(class="col-sm-3") {{m.filenumber}}
+                                    div(class="col-sm-2 text-right")<strong>DOB</strong>
+                                    div(class="col-sm-3") {{m.DOB}}
 
-                    div(id="debtorInfo", class="card-collapse, collapse in", role="tabpanel", aria-labelledby="debtorHeader")
-                        div(class="card-block")
-                            div(class="row")
-                                div(class="col-sm-2 text-right") <strong>File Number</strong>
-                                div(class="col-sm-3") {{card.filenumber}}
-                                div(class="col-sm-2 text-right")<strong>DOB</strong>
-                                div(class="col-sm-3") {{card.DOB}}
+                                div(class="row")
+                                    div(class="col-sm-2")
+                                    div(class="col-sm-3")
+                                    div(class="col-sm-2 text-right")<strong>SSAN</strong>
+                                    div(class="col-sm-3") {{m.SSAN}}
 
-                            div(class="row")
-                                div(class="col-sm-2")
-                                div(class="col-sm-3")
-                                div(class="col-sm-2 text-right")<strong>SSAN</strong>
-                                div(class="col-sm-3") {{card.SSAN}}
+                                div(class="row")
+                                    div(class="col-sm-2 text-right")<strong>Name</strong>
+                                    div(class="col-sm-3") {{m.fullname}}
+                                    div(class="col-sm-2 text-right")<strong>Employer</strong>
+                                    div(class="col-sm-3") {{m.employer}}
 
-                            div(class="row")
-                                div(class="col-sm-2 text-right")<strong>Name</strong>
-                                div(class="col-sm-3") {{card.fullname}}
-                                div(class="col-sm-2 text-right")<strong>Employer</strong>
-                                div(class="col-sm-3") {{card.employer}}
-
-                            div(class="row")
-                                div(class="col-sm-2 text-right")<strong>Address</strong>
-                                div(class="col-sm-3") {{card.address}}
-                                div(class="col-sm-2 text-right")<strong>Skipped Employer</strong>
-                                div(class="col-sm-3") {{card.custom}}
+                                div(class="row")
+                                    div(class="col-sm-2 text-right")<strong>Address</strong>
+                                    div(class="col-sm-3") {{m.address}}
+                                    div(class="col-sm-2 text-right")<strong>Skipped Employer</strong>
+                                    div(class="col-sm-3") {{m.custom}}

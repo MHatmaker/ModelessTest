@@ -4,24 +4,36 @@
     "use strict";
 
     console.log('PluginCtrl setup');
-    var areWeInitialized = false;
+    var areWeInitialized = false,
+        self = null;
     define([
         'angular'
     ], function (angular) {
         console.log('PluginCtrl define');
+        var selfMethods = {};
 
         areWeInitialized = false;
 
         function PluginCtrl($scope, $uibModalInstance, data) {
             console.log("in PluginCtrl");
             areWeInitialized = false;
+            self = this;
 
             $scope.data = {
                 guts : data.guts || "no guts",
                 title : data.title || "no title",
                 icon : data.icon,
-                snippet : data.snippet || "snippet stuff"
+                snippet : data.snippet || "snippet stuff",
+                callback : data.callback || "no callback",
+                nfos : []
             };
+
+            $scope.data.nfos = data.callback();
+
+            // internalSetNfo = function (nfos) {
+            //     $scope.data.nfos = nfos;
+            // };
+            // selfMethods.internalSetNfo = internalSetNfo;
 
             $scope.accept = function () {
                 console.log("on Accept " + $scope.data.snippet);
@@ -38,6 +50,7 @@
                     $scope.save();
                 }
             }; // end hitEnter
+            return selfMethods;
         }
 
         PluginCtrl.prototype.isInitialized = function () {
@@ -49,11 +62,17 @@
             $scope.data.title = data.title || "still no title";
         };
 
+        // PluginCtrl.prototype.setNfo = function (nfos) {
+        //     selfMethods.internalSetNfo(nfos);
+        // };
+
         function init(App) {
             console.log('PluginCtrl init');
 
             areWeInitialized = true;
-            App.controller('PluginCtrl',  ['$scope', '$uibModalInstance', 'data', PluginCtrl]);
+            var mthds = App.controller('PluginCtrl',  ['$scope', '$uibModalInstance', 'data', PluginCtrl]);
+            console.log("mthds are here");
+            console.debug(mthds);
 
             return PluginCtrl;
         }
@@ -61,7 +80,8 @@
         return {
             start: init,
             isInitialized : PluginCtrl.prototype.isInitialized,
-            showDialog : PluginCtrl.showDialog
+            showDialog : PluginCtrl.prototype.showDialog
+            // setNfo : PluginCtrl.prototype.setNfo
         };
     });
 

@@ -18,14 +18,13 @@
             $scope.data = {
                 title : "noooo on title",
                 guts : "gutless",
-                msg: "whatever",
-                plugguts : "pluginn guts",
-                plugmsg : "plugin msg`",
-                debtnfos : [
+                msg : "whatever",
+                callback : null,
+                nfos : [
                     {
                         fullname : "bill",
-                        SSAN : '123-45-6789',
-                        filenumber: 1,
+                        SSAN : "123-45-6789",
+                        filenumber: "1",
                         employer : 'Acme Widgets',
                         DOB : "01/01/1520",
                         address : "123 N. 1st St. Deadwood, SD",
@@ -33,8 +32,8 @@
                     },
                     {
                         fullname : "bob",
-                        SSAN : '987-65-4321',
-                        filenumber: 2,
+                        SSAN :"987-65-4321",
+                        filenumber: "2",
                         employer : 'Acme Gadgets',
                         DOB : "01/01/2220",
                         address : "123 N. 3rd Ave. Mortuary, UT",
@@ -42,14 +41,20 @@
                     },
                     {
                         fullname : "bill",
-                        SSAN : '123-65-4789',
-                        filenumber: 3,
+                        SSAN : "123-65-4789",
+                        filenumber: "3",
                         employer : 'Widgets R Us',
                         DOB : "01/01/1920",
                         address : "123 N. 1st St. Deadwood, SD",
                         custom : "fog"
                     }
                 ]
+            };
+            var grabDataCallback = function () {
+                return $scope.data.nfos;
+            }
+            $scope.data.callback = function () {
+                return $scope.data.nfos;
             };
 
             $scope.onExpandClicked = function () {
@@ -61,7 +66,7 @@
                 // console.log(tmplt);
 
                 $scope.data.guts = "guts, guts, guts";
-                $scope.data.title = "yippee, a title";
+                $scope.data.title = "duds";
 
                 var modalInstance = $uibModal.open({
                     // template : tmplt,
@@ -90,7 +95,9 @@
                 // console.log(tmplt);
 
                 $scope.data.guts = "guts, guts, guts";
-                $scope.data.title = "yippee, a title";
+                $scope.data.title = "Deadbeats";
+
+                console.debug($scope.data);
 
                 var modalInstance = $uibModal.open({
                     // template : tmplt,
