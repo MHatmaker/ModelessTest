@@ -27,32 +27,23 @@
                 callback : data.callback || "no callback",
                 nfos : [],
 
-                itm1Collapsed : 'true',
-                itm2Collapsed : 'true',
-                itm3Collapsed : 'true'
+                itmCollapsed : data.itmCollapsed || [true, true, true]
             };
 
             $scope.data.nfos = data.callback();
 
             $scope.onShowHideClicked = function (fno) {
                 console.log("filenumber " + fno);
-                switch(fno) {
-                    case '1' : {$scope.itm1Collapsed = !$scope.itm1Collapsed; break;}
-                    case '2' : {$scope.itm2Collapsed = !$scope.itm2Collapsed; break;}
-                    case '3' : {$scope.itm3Collapsed = !$scope.itm3Collapsed; break;}
+                var collapseTest = $scope.data.itmCollapsed[fno],
+                    ndx = 0;
+                if (collapseTest === true) {
+                    for (ndx=0; ndx < $scope.data.itmCollapsed.length; ndx++) {
+                        if (ndx !== fno && $scope.data.itmCollapsed[ndx] === false) {
+                            $scope.data.itmCollapsed[ndx] = true;
+                        }
+                    }
                 }
-            };
-
-            $scope.onShowHide1Clicked = function () {
-                $scope.itm1Collapsed = !$scope.itm1Collapsed;
-            };
-
-            $scope.onShowHide2Clicked = function () {
-                $scope.itm2Collapsed = !$scope.itm2Collapsed;
-            };
-
-            $scope.onShowHide3Clicked = function () {
-                $scope.itm3Collapsed = !$scope.itm3Collapsed;
+                $scope.data.itmCollapsed[fno] = !$scope.data.itmCollapsed[fno];
             };
 
             $scope.accept = function () {
@@ -82,9 +73,6 @@
             $scope.data.title = data.title || "still no title";
         };
 
-        // PluginCtrl.prototype.setNfo = function (nfos) {
-        //     selfMethods.internalSetNfo(nfos);
-        // };
 
         function init(App) {
             console.log('PluginCtrl init');
@@ -101,7 +89,6 @@
             start: init,
             isInitialized : PluginCtrl.prototype.isInitialized,
             showDialog : PluginCtrl.prototype.showDialog
-            // setNfo : PluginCtrl.prototype.setNfo
         };
     });
 

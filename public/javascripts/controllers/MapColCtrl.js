@@ -24,7 +24,7 @@
                     {
                         fullname : "bill",
                         SSAN : "123-45-6789",
-                        filenumber: "1",
+                        filenumber: 0,
                         employer : 'Acme Widgets',
                         DOB : "01/01/1520",
                         address : "123 N. 1st St. Deadwood, SD",
@@ -33,7 +33,7 @@
                     {
                         fullname : "bob",
                         SSAN :"987-65-4321",
-                        filenumber: "2",
+                        filenumber: 1,
                         employer : 'Acme Gadgets',
                         DOB : "01/01/2220",
                         address : "123 N. 3rd Ave. Mortuary, UT",
@@ -42,16 +42,15 @@
                     {
                         fullname : "bill",
                         SSAN : "123-65-4789",
-                        filenumber: "3",
+                        filenumber: 2,
                         employer : 'Widgets R Us',
                         DOB : "01/01/1920",
                         address : "123 N. 1st St. Deadwood, SD",
                         custom : "fog"
                     }
                 ],
-                itm1Collapsed : 'true',
-                itm2Collapsed : 'true',
-                itm3Collapsed : 'true'
+
+                itmCollapsed : [true, true, true]
             };
             var grabDataCallback = function () {
                 return $scope.data.nfos;
@@ -62,25 +61,6 @@
 
             $scope.onExpandClicked = function () {
                 $scope.$parent.onExpandClicked();
-            };
-
-            $scope.onShowHideClicked = function () {
-                console.debug(evt);
-                $scope.itm1Collapsed = !$scope.itm1Collapsed;
-            };
-
-            // ng-click="function () {itm{{m.filenumber}}Collapsed = !itm{{m.filenumber}}Collapsed;}",
-
-            $scope.onShowHide1Clicked = function () {
-                $scope.itm1Collapsed = !$scope.itm1Collapsed;
-            };
-
-            $scope.onShowHide2Clicked = function () {
-                $scope.itm2Collapsed = !$scope.itm2Collapsed;
-            };
-
-            $scope.onShowHide3Clicked = function () {
-                $scope.itm3Collapsed = !$scope.itm3Collapsed;
             };
 
             $scope.onShowMDialogClicked = function () {

@@ -18,7 +18,7 @@ div(class="modeless", id="idPlugin", role="dialog", aria-labelledby="pluginLabel
                                     | Debtor Info {{m.filenumber}}
 
                         div(id="debtorInfo{{m.filenumber}}", class="card-collapse collapse", role="tabpanel",
-                            uib-collapse="itm{{m.filenumber}}Collapsed"
+                            uib-collapse="data.itmCollapsed[{{m.filenumber}}]",
                             aria-labelledby="debtorHeader{{m.filenumber}}")
                             div(class="card card-block")
                                 div(class="row")
