@@ -60,6 +60,9 @@
             $scope.onExpandClicked = function () {
                 $scope.$parent.onExpandClicked();
             };
+            $scope.onShowHideClicked = function (blk) {
+                 document.getElementById(blk).style.display = "block";
+            };
 
             $scope.onShowMDialogClicked = function () {
                 console.log("onShowMDialogClicked");

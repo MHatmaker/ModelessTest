@@ -30,10 +30,9 @@
 
             $scope.data.nfos = data.callback();
 
-            // internalSetNfo = function (nfos) {
-            //     $scope.data.nfos = nfos;
-            // };
-            // selfMethods.internalSetNfo = internalSetNfo;
+            $scope.onShowHideClicked = function (blk) {
+                 document.getElementById(blk).style.display = "block";
+            };
 
             $scope.accept = function () {
                 console.log("on Accept " + $scope.data.snippet);

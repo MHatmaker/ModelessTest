@@ -11,10 +11,13 @@ div(class="modeless", id="idPlugin", role="dialog", aria-labelledby="pluginLabel
                     div(class="card")
                         div(class="card-header", role="tab", id="debtorHeader{{m.filenumber}}")
                             h4(class="card-title")
-                                a(class="btn btn-success", data-toggle="collapse", href="#debtorInfo{{m.filenumber}}", aria-expanded="false", aria-controls="debtorInfo{{m.filenumber}}")
+                                button(class="btn btn-success", data-toggle="collapse",
+                                    data-target="#debtorInfo{{m.filenumber}}", aria-expanded="false",
+                                    aria-controls="debtorInfo{{m.filenumber}}")
                                     | Debtor Info {{m.filenumber}}
 
-                        div(id="debtorInfo{{m.filenumber}}", class="collapse-card collapse", aria-labelledby="debtorHeader{{m.filenumber}}")
+                        div(id="debtorInfo{{m.filenumber}}", class="card-collapse collapse", role="tabpanel",
+                            aria-labelledby="debtorHeader{{m.filenumber}}")
                             div(class="card card-block")
                                 div(class="row")
                                     div(class="col-sm-2 text-right") <strong>File Number</strong>
