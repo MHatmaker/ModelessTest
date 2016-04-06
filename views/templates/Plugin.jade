@@ -12,11 +12,13 @@ div(class="modeless", id="idPlugin", role="dialog", aria-labelledby="pluginLabel
                         div(class="card-header", role="tab", id="debtorHeader{{m.filenumber}}")
                             h4(class="card-title")
                                 button(class="btn btn-success", data-toggle="collapse",
+                                    ng-click="onShowHideClicked(m.filenumber)",
                                     data-target="#debtorInfo{{m.filenumber}}", aria-expanded="false",
                                     aria-controls="debtorInfo{{m.filenumber}}")
                                     | Debtor Info {{m.filenumber}}
 
                         div(id="debtorInfo{{m.filenumber}}", class="card-collapse collapse", role="tabpanel",
+                            uib-collapse="itm{{m.filenumber}}Collapsed"
                             aria-labelledby="debtorHeader{{m.filenumber}}")
                             div(class="card card-block")
                                 div(class="row")

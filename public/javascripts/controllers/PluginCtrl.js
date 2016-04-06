@@ -25,13 +25,34 @@
                 icon : data.icon,
                 snippet : data.snippet || "snippet stuff",
                 callback : data.callback || "no callback",
-                nfos : []
+                nfos : [],
+
+                itm1Collapsed : 'true',
+                itm2Collapsed : 'true',
+                itm3Collapsed : 'true'
             };
 
             $scope.data.nfos = data.callback();
 
-            $scope.onShowHideClicked = function (blk) {
-                 document.getElementById(blk).style.display = "block";
+            $scope.onShowHideClicked = function (fno) {
+                console.log("filenumber " + fno);
+                switch(fno) {
+                    case '1' : {$scope.itm1Collapsed = !$scope.itm1Collapsed; break;}
+                    case '2' : {$scope.itm2Collapsed = !$scope.itm2Collapsed; break;}
+                    case '3' : {$scope.itm3Collapsed = !$scope.itm3Collapsed; break;}
+                }
+            };
+
+            $scope.onShowHide1Clicked = function () {
+                $scope.itm1Collapsed = !$scope.itm1Collapsed;
+            };
+
+            $scope.onShowHide2Clicked = function () {
+                $scope.itm2Collapsed = !$scope.itm2Collapsed;
+            };
+
+            $scope.onShowHide3Clicked = function () {
+                $scope.itm3Collapsed = !$scope.itm3Collapsed;
             };
 
             $scope.accept = function () {

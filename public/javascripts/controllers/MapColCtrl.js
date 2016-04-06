@@ -48,7 +48,10 @@
                         address : "123 N. 1st St. Deadwood, SD",
                         custom : "fog"
                     }
-                ]
+                ],
+                itm1Collapsed : 'true',
+                itm2Collapsed : 'true',
+                itm3Collapsed : 'true'
             };
             var grabDataCallback = function () {
                 return $scope.data.nfos;
@@ -60,8 +63,24 @@
             $scope.onExpandClicked = function () {
                 $scope.$parent.onExpandClicked();
             };
-            $scope.onShowHideClicked = function (blk) {
-                 document.getElementById(blk).style.display = "block";
+
+            $scope.onShowHideClicked = function () {
+                console.debug(evt);
+                $scope.itm1Collapsed = !$scope.itm1Collapsed;
+            };
+
+            // ng-click="function () {itm{{m.filenumber}}Collapsed = !itm{{m.filenumber}}Collapsed;}",
+
+            $scope.onShowHide1Clicked = function () {
+                $scope.itm1Collapsed = !$scope.itm1Collapsed;
+            };
+
+            $scope.onShowHide2Clicked = function () {
+                $scope.itm2Collapsed = !$scope.itm2Collapsed;
+            };
+
+            $scope.onShowHide3Clicked = function () {
+                $scope.itm3Collapsed = !$scope.itm3Collapsed;
             };
 
             $scope.onShowMDialogClicked = function () {
