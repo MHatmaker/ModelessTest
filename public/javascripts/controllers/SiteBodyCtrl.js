@@ -24,7 +24,7 @@
 
             $scope.leftColShowing = 'block';
             $scope.rightColShowing = 'block';
-            $scope.mapColDef = "col-xs-12 col-sm-6 col-md-4";;
+            $scope.mapColDef = "col-xs-10 col-sm-6 col-md-4";
 
             $scope.onExpandClicked = function () {
                 if ($scope.data.expanded === true) {

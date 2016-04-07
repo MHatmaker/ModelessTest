@@ -1,8 +1,10 @@
 
-div(class="modeless", id="idPlugin", role="dialog", aria-labelledby="pluginLabel", aria-hidden="true")
+div(class="modeless", id="idPlugin", role="dialog",
+    aria-labelledby="pluginLabel", aria-hidden="true",
+    class=col-sm-12 col-sx-10)
     div(class="modal-content")
         div(class="modal-header")
-            button(type="button", class="close", data-dismiss="modal", aria-hidden="true", ng-click="cancel()") &times
+            button(type="button", class="close col-sm-8 col-xs-6", data-dismiss="modal", aria-hidden="true", ng-click="cancel()") &times
 
         h5(class="modal-title", id="pluginLabel") {{data.title}}
         div(class="modal-body")
@@ -22,25 +24,25 @@ div(class="modeless", id="idPlugin", role="dialog", aria-labelledby="pluginLabel
                             aria-labelledby="debtorHeader{{m.filenumber}}")
                             div(class="card card-block")
                                 div(class="row")
-                                    div(class="col-sm-2 text-right") <strong>File Number</strong>
-                                    div(class="col-sm-3") {{m.filenumber}}
-                                    div(class="col-sm-2 text-right")<strong>DOB</strong>
-                                    div(class="col-sm-3") {{m.DOB}}
+                                    div(class="col-sm-2 col-xs-5 text-right") <strong>File Number</strong>
+                                    div(class="col-sm-3 col-xs-4") {{m.filenumber}}
+                                    div(class="col-sm-2 col-xs-5 text-right")<strong>DOB</strong>
+                                    div(class="col-sm-3 col-xs-4") {{m.DOB}}
 
                                 div(class="row")
-                                    div(class="col-sm-2")
-                                    div(class="col-sm-3")
-                                    div(class="col-sm-2 text-right")<strong>SSAN</strong>
-                                    div(class="col-sm-3") {{m.SSAN}}
+                                    div(class="col-sm-2 col-xs-5")
+                                    div(class="col-sm-3 col-xs-4")
+                                    div(class="col-sm-2 col-xs-5 text-right")<strong>SSAN</strong>
+                                    div(class="col-sm-3 col-xs-4") {{m.SSAN}}
 
                                 div(class="row")
-                                    div(class="col-sm-2 text-right")<strong>Name</strong>
-                                    div(class="col-sm-3") {{m.fullname}}
-                                    div(class="col-sm-2 text-right")<strong>Employer</strong>
-                                    div(class="col-sm-3") {{m.employer}}
+                                    div(class="col-sm-2 col-xs-5 text-right")<strong>Name</strong>
+                                    div(class="col-sm-3 col-xs-4") {{m.fullname}}
+                                    div(class="col-sm-2 col-xs-5 text-right")<strong>Employer</strong>
+                                    div(class="col-sm-3 col-xs-4") {{m.employer}}
 
                                 div(class="row")
-                                    div(class="col-sm-2 text-right")<strong>Address</strong>
-                                    div(class="col-sm-3") {{m.address}}
-                                    div(class="col-sm-2 text-right")<strong>Skipped Employer</strong>
-                                    div(class="col-sm-3") {{m.custom}}
+                                    div(class="col-sm-2 col-xs-5 text-right")<strong>Address</strong>
+                                    div(class="col-sm-3 col-xs-4") {{m.address}}
+                                    div(class="col-sm-2 col-xs-5 text-right")<strong>Skipped Employer</strong>
+                                    div(class="col-sm-3 col-xs-4") {{m.custom}}
