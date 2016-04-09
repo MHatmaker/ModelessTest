@@ -27,7 +27,9 @@
                 callback : data.callback || "no callback",
                 nfos : [],
 
-                itmCollapsed : data.itmCollapsed || [true, true, true]
+                itmCollapsed : data.itmCollapsed || [true, true, true],
+                colTextRight : "col-sm-2 col-xs-5 text-right",
+                colText : "col-sm-3 col-xs-4"
             };
 
             $scope.data.nfos = data.callback();

@@ -1,7 +1,6 @@
 
-div(class="modeless", id="idPlugin", role="dialog",
-    aria-labelledby="pluginLabel", aria-hidden="true",
-    class=col-sm-12 col-sx-10)
+div(class="modeless col-sm-12 col-sx-10", id="idPlugin", role="dialog",
+    aria-labelledby="pluginLabel", aria-hidden="true")
     div(class="modal-content")
         div(class="modal-header")
             span
@@ -29,26 +28,27 @@ div(class="modeless", id="idPlugin", role="dialog",
                             uib-collapse="data.itmCollapsed[{{m.filenumber}}]",
                             aria-labelledby="debtorHeader{{m.filenumber}}")
                             div(class="card card-block")
-                                div(class="row")
-                                    div(class="col-sm-2 col-xs-5 text-right") <strong>File Number</strong>
-                                    div(class="col-sm-3 col-xs-4") {{m.filenumber}}
-                                    div(class="col-sm-2 col-xs-5 text-right")<strong>DOB</strong>
-                                    div(class="col-sm-3 col-xs-4") {{m.DOB}}
+                                div(class="container")
+                                    div(class="row row-eq-height")
+                                        div(class="{{data.colTextRight}}") <strong>File Number</strong>
+                                        div(class="{{data.colText}}") {{m.filenumber}}
+                                        div(class="{{data.colTextRight}}")<strong>DOB</strong>
+                                        div(class="{{data.colText}}") {{m.DOB}}
 
-                                div(class="row")
-                                    div(class="col-sm-2 col-xs-5")
-                                    div(class="col-sm-3 col-xs-4")
-                                    div(class="col-sm-2 col-xs-5 text-right")<strong>SSAN</strong>
-                                    div(class="col-sm-3 col-xs-4") {{m.SSAN}}
+                                    div(class="row row-eq-height")
+                                        div(class="{{data.colTextRight}}") <strong>Employer</strong>
+                                        div(class="{{data.colText}}") {{m.employer}}
+                                        div(class="{{data.colTextRight}}")<strong>SSAN</strong>
+                                        div(class="{{data.colText}}") {{m.SSAN}}
 
-                                div(class="row")
-                                    div(class="col-sm-2 col-xs-5 text-right")<strong>Name</strong>
-                                    div(class="col-sm-3 col-xs-4") {{m.fullname}}
-                                    div(class="col-sm-2 col-xs-5 text-right")<strong>Employer</strong>
-                                    div(class="col-sm-3 col-xs-4") {{m.employer}}
+                                    div(class="row row-eq-height")
+                                        div(class="{{data.colTextRight}}")<strong>Name</strong>
+                                        div(class="{{data.colText}}") {{m.fullname}}
+                                        div(class="{{data.colTextRight}}")<strong>Employer</strong>
+                                        div(class="{{data.colText}}") {{m.employer}}
 
-                                div(class="row")
-                                    div(class="col-sm-2 col-xs-5 text-right")<strong>Address</strong>
-                                    div(class="col-sm-3 col-xs-4") {{m.address}}
-                                    div(class="col-sm-2 col-xs-5 text-right")<strong>Skipped Employer</strong>
-                                    div(class="col-sm-3 col-xs-4") {{m.custom}}
+                                    div(class="row row-eq-height")
+                                        div(class="{{data.colTextRight}}")<strong>Address</strong>
+                                        div(class="{{data.colText}}") {{m.address}}
+                                        div(class="{{data.colTextRight}}")<strong>Skipped Employer</strong>
+                                        div(class="{{data.colText}}") {{m.custom}}
