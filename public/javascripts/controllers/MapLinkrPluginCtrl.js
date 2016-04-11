@@ -36,6 +36,10 @@
                 $scope.mldata[clickedItem].isCollapsed = !$scope.mldata[clickedItem].isCollapsed;
             };
 
+            $scope.onShowHideDestChoiceClicked = function (m) {
+                console.log("ShowHide " + m)
+            };
+
             $scope.accept = function () {
                 console.log("on Accept ");
                 $uibModalInstance.close();

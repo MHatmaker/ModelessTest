@@ -94,22 +94,22 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
                                         li(class="acc li") 2. The group pane displays groups matching the search term.  Click on one of the groups.
                                         li(class="acc li") 3. The map selection pane opens showing available maps in the group.  Click on a map item.  A dialog opens offering a choice of three possible destination viewers where the selected map can be displayed.  The most convenient option is usually the "New Window" option.
 
-                                    div(id="repeater", ng-repeat="m in mldata['using'].subtext", class="ng-scope")
+                                    div(id="repeater", ng-repeat="m in mldata.using.destchoices", class="ng-scope")
                                         div(class="card")
-                                            div(class="card-header", role="tab", id="destHeader{{m}}")
+                                            div(class="card-header", role="tab", id="destHeader{{m.choice}}")
                                                 button(class="btn", data-toggle="collapse",
-                                                    ng-click="onShowHideClicked(m)",
-                                                    data-target="#destChoice{{m}}.subtext", aria-expanded="false",
-                                                    aria-controls="destChoice{{m}}")
+                                                    ng-click="onShowHideDestChoiceClicked(m.choice)",
+                                                    data-target="#destChoice{{m.choice}}", aria-expanded="false",
+                                                    aria-controls="destChoice{{m.choice}}")
                                                     span
-                                                    | Destination Choice {{m}}
+                                                    | Destination Choice {{m.choice}}
                                                     img(class='accdionchevron-right',
-                                                        ng-class="{'accdionchevron-right': mldata['using'][{{m}}].subtext.isCollapsed, \
-                                                        'accdionchevron-down': !mldata['using'][{{m}}].subtext.isCollapsed}")
+                                                        ng-class="{'accdionchevron-right': {{m.details.isCollapsed}}, \
+                                                        'accdionchevron-down': !{{m.details.isCollapsed}}}")
 
-                                            div(id="destChoice{{m}}", class="card-collapse collapse", role="tabpanel",
-                                                uib-collapse="mldata['using'][{{m}}].subtext.isCollapsed",
-                                                aria-labelledby="destChoice[{{m}}]")
+                                            div(id="destChoice{{m.choice}}", class="card-collapse collapse", role="tabpanel",
+                                                uib-collapse="{{m.detais.isCollapsed}}",
+                                                aria-labelledby="destChoice{{m.choice}}")
                                                 div(class="card card-block")
                                                     div(class="container")
-                                                    | {{m}}
+                                                    | {{m.details.text}}
