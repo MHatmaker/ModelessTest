@@ -1,0 +1,95 @@
+
+div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
+    aria-labelledby="mapLinkrLabel", aria-hidden="true")
+    div(class="modal-content")
+        div(class="modal-header")
+            span
+                div(id="mapLinkrLabel", class="modal-title col-sm-12", style="font-size: 1.5rem")
+                    MapLinkr
+                    button(type="button", class="close col-sm-1 col-xs-6",
+                        data-dismiss="modal", aria-hidden="true", ng-click="cancel()") &times
+
+        div(class="modal-body")
+            div(id="mapLinkrInfo", role="tablist", aria-multiselectable="true")
+                div(class="card")
+                    div(class="card-header", role="tab", id="idLatestNews")
+                        button(class="btn", data-toggle="collapse",
+                            ng-click="onShowHideMapLinkrClicked('news')",
+                            data-target="#idLatestNewsCard", aria-expanded="false",
+                            aria-controls="idLatestNewsCard")
+                            span
+                            | MapLinkr News
+                            img(class='accdionchevron-right',
+                                ng-class="{'accdionchevron-right': mldata['news'], \
+                                'accdionchevron-down': !mldata['news']}")
+
+                        div(id="idLatestNewsCard", class="card-collapse collapse", role="tabpanel",
+                            uib-collapse="mldata['news']",
+                            aria-labelledby="idLatestNews")
+                            div(class="card card-block")
+                                div(class="container")
+                                    div(style='font-size:1.25em;border:2px solid red;margin:1px;padding:2px;')
+                                        h4(style="color:red") Latest Release
+                                        h5(style="color:red")
+                                            | Release notes will appear here as new features are added to the MapLinkr plug-in.
+                                        h5
+                                            | Select the MapLinkr Instruction accordion pane below for step-by-step help.
+
+                                    h4 OTHER GREAT STUFF
+                                    br
+
+                                    img(ng-src="../stylesheets/images/WindowWashers.png", width="95%" height="95%")
+
+                                    br
+                                    h5 Wallace and Gromit Use MapLinkr.
+                                    p(style='font-size: 1.2em;color: #333333; border:2px solid green;margin:1px;padding:2px;').
+                                        Wallace and Gromit have improved the efficiency of their window washing service by incorporating community maps of reported dirty windows.
+                                    br
+
+                div(class="card")
+                    div(class="card-header", role="tab", id="idUsingMapLinkr")
+                        button(class="btn", data-toggle="collapse",
+                            ng-click="onShowHideMapLinkrClicked('using')",
+                            data-target="#idUsingMapLinkrCard", aria-expanded="false",
+                            aria-controls="idUsingMapLinkrCard")
+                            span
+                            | Using MapLinkr
+                            img(class='accdionchevron-right',
+                                ng-class="{'accdionchevron-right': mldata['using'], \
+                                'accdionchevron-down': !mldata['using']}")
+
+                        div(id="idUsingMapLinkrCard", class="card-collapse collapse", role="tabpanel",
+                            uib-collapse="mldata['using']",
+                            aria-labelledby="idUsingMapLinkr")
+                            div(class="card card-block")
+                                div(class="container")
+
+                                    p(style='font-size:1.1em;margin:0.3em')
+                                        | MapLinkr allows viewing mulitple synchronized maps in separate windows.  The maps can use
+                                        |  base maps or different themes for overlays.  Unlike standard layer overlays in a
+                                        | single viewer, the base layers and overlays do not interfere with the visibility
+                                        | of other selected layers.
+
+                                    p(style='font-size:1.1em;margin:0.3em;')
+                                        | Linked maps can be created from three map viewer sources, if the viewer system incorporates
+                                        | the MapLinkr plug-in.
+
+                                    ul#MapTypes(style="height:100%")
+                                        li(class="acc li") 1  A web page with an ArcGIS webmap viewer.
+                                        li(class="acc li") 2  A web page with a google map display.
+                                        li(class="acc li") 3  A web page with an open source map display.
+
+                                    h3( style="text-align:left") Steps for Google and Leaflet maps
+                                    p(style='font-size:0.75em;margin:0.3em')
+
+                                        | Pan and zoom a Google or Leaflet map to the desired extent.  In a Google map display, the search tool will appear.  Enter a search category to display search results on the map.
+
+                                    p(style='font-size:1.1em;margin:0.3em')
+                                        | Further sharing instructions are provided under the "Sharing Overview" accordion pane.
+
+                                    h3( style="text-align:left") Steps for ArcGIS Online search
+
+                                    ul#StepsList(style="height:100%")
+                                        li(class="acc li") 1. Open the accordion pane for group search.  Enter a search term and click the submit button.
+                                        li(class="acc li") 2. The group pane displays groups matching the search term.  Click on one of the groups.
+                                        li(class="acc li") 3. The map selection pane opens showing available maps in the group.  Click on a map item.  A dialog opens offering a choice of three possible destination viewers where the selected map can be displayed.  The most convenient option is usually the "New Window" option.

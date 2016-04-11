@@ -32,8 +32,12 @@ block content
                             img(src="../images/Expand.png", id='ExpandSumImgId', class="expandoimage", style="margin: 0.01em 0.5em  0.01em  0.05em;")
                             figcaption(class="btn", style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;font-weight: 800;") Expand/Shrink Map
                     div(class="col-xs-6")
-                        button(type"button", class="btn btn-primary", ng-click="onShowMDialogClicked()", style="margin-top: 0.01em;") Toggle Dialog
-                        button(type"button", class="btn btn-primary", ng-click="onShowPluginClicked()", style="margin-top: 0.01em;") Toggle Plugin
+                        button(type"button", class="btn btn-primary", ng-click="onShowMDialogClicked()",
+                            style="margin-top: 0.01em;") Toggle Dialog
+                        button(type"button", class="btn btn-primary", ng-click="onShowPluginClicked()",
+                            style="margin-top: 0.01em;") Toggle Plugin,
+                        button(type"button", class="btn btn-primary", ng-click="onMapLinkrClicked()",
+                            style="margin-top: 0.01em;") Toggle MapLinkr
 
                 div(class="row")
                     div(ng-controller="MapViewCtrl", id="MapViewCtrlId")

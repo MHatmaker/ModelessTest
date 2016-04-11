@@ -8,8 +8,9 @@
     define([
         'angular',
         'controllers/BSColDlgCtrl',
-        'controllers/PluginCtrl'
-    ], function (angular, BSColDlgCtrl, PluginCtrl) {
+        'controllers/PluginCtrl',
+        'controllers/MapLinkrPluginCtrl'
+    ], function (angular, BSColDlgCtrl, PluginCtrl, MapLinkrPluginCtrl) {
         console.log('MapColCtrl define');
 
         function MapColCtrl($scope, $uibModal) {
@@ -52,6 +53,7 @@
 
                 itmCollapsed : [true, true, true]
             };
+
             var grabDataCallback = function () {
                 return $scope.data.nfos;
             }
@@ -121,6 +123,54 @@
                     console.log('Modal dismissed at: ' + new Date());
                 });
 
+            };
+
+            $scope.mldata = {
+                'news' : true,
+                'using' : true,
+                'callback' : null
+            };
+/*
+                itmCollapsed = [
+                    {
+                        'itm' : 'news',
+                        'collapsed' : true
+                    }
+                    {
+                        'itm' : 'using',
+                        'collapsed' : true
+                    }
+                ]
+            }
+*/
+            $scope.onMapLinkrClicked = function () {
+                console.log("onMapLinkrClicked");
+
+                console.debug($scope.mldata);
+
+                var modalInstance = $uibModal.open({
+                    // template : tmplt,
+                    templateUrl : '/templates/MapLinkrPlugin',   // .jade will be appended
+                    controller : 'MapLinkrPluginCtrl',
+                    backdrop : 'false',
+
+                    resolve : {
+                        data: function () {
+                            return $scope.mldata;
+                        }
+                    }
+                });
+
+                modalInstance.result.then(function (msg) {
+                    console.log("return from showing MapLinkr`dialog");
+                    console.log(msg);
+                }, function () {
+                    console.log('MapLinkr Modal dismissed at: ' + new Date());
+                });
+            };
+
+            $scope.mldata.callback = function () {
+                return $scope.mldata;
             };
         }
 

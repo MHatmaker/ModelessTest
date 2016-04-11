@@ -53,9 +53,10 @@
             'controllers/RightColCtrl',
             'controllers/SummaryCtrl',
             'controllers/BSColDlgCtrl',
-            'controllers/PluginCtrl'
+            'controllers/PluginCtrl',
+            'controllers/MapLinkrPluginCtrl'
         ], function (TopRowCtrl, Row2Ctrl, SiteBodyCtrl, LeftColCtrl,
-            MapColCtrl, MapViewCtrl, RightColCtrl, SummaryCtrl, BSColDlgCtrl, PluginCtrl) {
+            MapColCtrl, MapViewCtrl, RightColCtrl, SummaryCtrl, BSColDlgCtrl, PluginCtrl, MapLinkrPluginCtrl) {
             require(['javascripts/domReady!'], function (doc) {
                 //This function is called once the DOM is ready,
                 //notice the value for 'domReady!' is the current
@@ -108,6 +109,7 @@
                 SummaryCtrl.start(App);
                 BSColDlgCtrl.start(App);
                 PluginCtrl.start(App);
+                MapLinkrPluginCtrl.start(App);
 
                 angular.bootstrap(document.body, ['app']);
             });
