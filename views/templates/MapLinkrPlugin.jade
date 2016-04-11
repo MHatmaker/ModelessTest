@@ -20,11 +20,11 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
                             span
                             | MapLinkr News
                             img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['news'], \
-                                'accdionchevron-down': !mldata['news']}")
+                                ng-class="{'accdionchevron-right': mldata['news'].isCollapsed, \
+                                'accdionchevron-down': !mldata['news'].isCollapsed}")
 
                         div(id="idLatestNewsCard", class="card-collapse collapse", role="tabpanel",
-                            uib-collapse="mldata['news']",
+                            uib-collapse="mldata['news'].isCollapsed",
                             aria-labelledby="idLatestNews")
                             div(class="card card-block")
                                 div(class="container")
@@ -55,11 +55,11 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
                             span
                             | Using MapLinkr
                             img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['using'], \
-                                'accdionchevron-down': !mldata['using']}")
+                                ng-class="{'accdionchevron-right': mldata['using'].isCollapsed, \
+                                'accdionchevron-down': !mldata['using'].isCollapsed}")
 
                         div(id="idUsingMapLinkrCard", class="card-collapse collapse", role="tabpanel",
-                            uib-collapse="mldata['using']",
+                            uib-collapse="mldata['using'].isCollapsed",
                             aria-labelledby="idUsingMapLinkr")
                             div(class="card card-block")
                                 div(class="container")
@@ -93,3 +93,23 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
                                         li(class="acc li") 1. Open the accordion pane for group search.  Enter a search term and click the submit button.
                                         li(class="acc li") 2. The group pane displays groups matching the search term.  Click on one of the groups.
                                         li(class="acc li") 3. The map selection pane opens showing available maps in the group.  Click on a map item.  A dialog opens offering a choice of three possible destination viewers where the selected map can be displayed.  The most convenient option is usually the "New Window" option.
+
+                                    div(id="repeater", ng-repeat="m in mldata['using'].subtext", class="ng-scope")
+                                        div(class="card")
+                                            div(class="card-header", role="tab", id="destHeader{{m}}")
+                                                button(class="btn", data-toggle="collapse",
+                                                    ng-click="onShowHideClicked(m)",
+                                                    data-target="#destChoice{{m}}.subtext", aria-expanded="false",
+                                                    aria-controls="destChoice{{m}}")
+                                                    span
+                                                    | Destination Choice {{m}}
+                                                    img(class='accdionchevron-right',
+                                                        ng-class="{'accdionchevron-right': mldata['using'][{{m}}].subtext.isCollapsed, \
+                                                        'accdionchevron-down': !mldata['using'][{{m}}].subtext.isCollapsed}")
+
+                                            div(id="destChoice{{m}}", class="card-collapse collapse", role="tabpanel",
+                                                uib-collapse="mldata['using'][{{m}}].subtext.isCollapsed",
+                                                aria-labelledby="destChoice[{{m}}]")
+                                                div(class="card card-block")
+                                                    div(class="container")
+                                                    | {{m}}

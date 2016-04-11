@@ -33,7 +33,7 @@
                     },
                     {
                         fullname : "bob",
-                        SSAN :"987-65-4321",
+                        SSAN : "987-65-4321",
                         filenumber: 1,
                         employer : 'Acme Gadgets',
                         DOB : "01/01/2220",
@@ -54,9 +54,10 @@
                 itmCollapsed : [true, true, true]
             };
 
-            var grabDataCallback = function () {
-                return $scope.data.nfos;
-            }
+            // var grabDataCallback = function () {
+            //     return $scope.data.nfos;
+            // };
+
             $scope.data.callback = function () {
                 return $scope.data.nfos;
             };
@@ -126,8 +127,36 @@
             };
 
             $scope.mldata = {
-                'news' : true,
-                'using' : true,
+                'news' : {
+                    'isCollapsed' : true,
+                    'subtext' : ""
+                },
+                'using' : {
+                    'isCollapsed' : true,
+                    'subtext' : {
+                        'sameWindow' : {
+                            'isCollapsed' : true,
+                            'text' : 'The newly selected map replaces the current map in the map viewer to the left.'
+                        },
+
+                        'newTab' : {
+                            'isCollapsed' : true,
+                            'text' : 'The newly selected map opens in a new tab in the current browser. \
+                                   Switch to the tab and drag the tab to the desktop, which displays \
+                                    the tab\'s contents in a completely new browser instance. \
+                                      This is a fully functional web browser.'
+                        },
+
+                        'newWindow' : {
+                            'isCollapsed' : true,
+                            'text' : 'The newly selected map is opened in a map viewer in a \
+                                new popup  window.  Although this is not a full-featured new \
+                                web browser instance, it provides complete functionality as \
+                                 a synchronized map viewer.  If  popups are turned off, \
+                                 use sequence described under the \'New Tab\' option above.'
+                        }
+                    }
+                },
                 'callback' : null
             };
 /*

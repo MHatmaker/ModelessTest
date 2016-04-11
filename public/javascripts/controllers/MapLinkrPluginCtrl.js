@@ -24,21 +24,21 @@
             $scope.mldata = data.callback();
 
             $scope.onShowHideMapLinkrClicked = function (clickedItem) {
-                var collapseTest = $scope.mldata[clickedItem],
+                var collapseTest = $scope.mldata[clickedItem].isCollapsed,
                     itm = '';
                 if (collapseTest === true) {
                     for (itm in $scope.mldata) {
-                        if (itm !== clickedItem && $scope.mldata[itm] === false) {
-                            $scope.mldata[itm] = true;
+                        if (itm !== clickedItem && $scope.mldata[itm].isCollapsed === false) {
+                            $scope.mldata[itm].isCollapsed = true;
                         }
                     }
                  }
-                $scope.mldata[clickedItem] = !$scope.mldata[clickedItem];
+                $scope.mldata[clickedItem].isCollapsed = !$scope.mldata[clickedItem].isCollapsed;
             };
 
             $scope.accept = function () {
-                console.log("on Accept " + $scope.mldata.snippet);
-                $uibModalInstance.close($scope.mldata.snippet);
+                console.log("on Accept ");
+                $uibModalInstance.close();
             };
 
             $scope.cancel = function () {
