@@ -36,8 +36,21 @@
                 $scope.mldata[clickedItem].isCollapsed = !$scope.mldata[clickedItem].isCollapsed;
             };
 
-            $scope.onShowHideDestChoiceClicked = function (m) {
-                console.log("ShowHide " + m)
+            $scope.onShowHideDestChoiceClicked = function (clickedItem) {
+                var collapseTest = $scope.mldata.using.destchoices[clickedItem].details.isCollapsed,
+                    itm = '';
+                if (collapseTest === true) {
+                    for (itm in $scope.mldata.using.destchoices) {
+                        console.log('test ' + itm + ' against ' + clickedItem);
+                        console.log($scope.mldata.using.destchoices[itm].details.isCollapsed)
+                        if (itm !== clickedItem && $scope.mldata.using.destchoices[itm].details.isCollapsed === false) {
+                            $scope.mldata.using.destchoices[itm].details.isCollapsed = true;
+                        }
+                    }
+                 }
+                $scope.mldata.using.destchoices[clickedItem].details.isCollapsed = !$scope.mldata.using.destchoices[clickedItem].details.isCollapsed;
+                console.log("ShowHide " + clickedItem)
+                console.log("is now " + $scope.mldata.using.destchoices[clickedItem].details.isCollapsed)
             };
 
             $scope.accept = function () {

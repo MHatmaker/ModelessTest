@@ -107,9 +107,9 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
                                                         ng-class="{'accdionchevron-right': {{m.details.isCollapsed}}, \
                                                         'accdionchevron-down': !{{m.details.isCollapsed}}}")
 
-                                            div(id="destChoice{{m.choice}}", class="card-collapse collapse", role="tabpanel",
-                                                uib-collapse="{{m.detais.isCollapsed}}",
-                                                aria-labelledby="destChoice{{m.choice}}")
-                                                div(class="card card-block")
-                                                    div(class="container")
-                                                    | {{m.details.text}}
+                                                div(id="destChoice{{m.choice}}", class="card-collapse collapse", role="tabpanel",
+                                                    uib-collapse="{{m.details.isCollapsed}}",
+                                                    aria-labelledby="destHeader{{m.choice}}")
+                                                    div(class="card card-block")
+                                                        div(class="container")
+                                                        | {{m.details.text}}
