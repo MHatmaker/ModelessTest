@@ -156,3 +156,203 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
 
                                         div(id='gridpaneGroup', style="overflow: hidden; padding: 3px;background-color:#6E9096;", ng-style="getGridStyleWrapper()")
                                             div(id="grpGridId", ng-grid="gridGrpOptions", ng-style="getGridStyleGroup()", style="margin:1px;")
+
+
+                div(class="card")
+                    div(class="card-header", role="tab", id="idMapSearcher")
+                        button(class="btn", data-toggle="collapse",
+                            ng-click="onShowHideMapLinkrClicked('maps')",
+                            data-target="#idMapSearcherCard", aria-expanded="false",
+                            aria-controls="idMapSearcherCard")
+                            span
+                            | AGO Map Search
+                            img(class='accdionchevron-right',
+                                ng-class="{'accdionchevron-right': mldata['maps'].isCollapsed, \
+                                'accdionchevron-down': !mldata['maps'].isCollapsed}")
+
+                    div(id="idMapSearcherCard", class="card-collapse collapse", role="tabpanel",
+                        uib-collapse="mldata['maps'].isCollapsed",
+                        aria-labelledby="idMapSearcher")
+                        div(class="card card-block")
+                            div(class="container")
+                                #SearchMap
+                                    div(id="searchToolWrapperMap")
+                                        span
+                                            label(id='mapSearchLabel', for='signInMap', style='font-size:12pt;') AGO Map Search
+
+                                            input(type="button", class="btn", id="signInMap",
+                                                name="signInMap", ng-click='signInFromMapTab();',
+                                                style='width:30%;font-size:80%', value='{{signInOutMap}}')
+
+                                        h5(id="mapSrchInstId", style='padding:2px 3px;margin: 2px 3px;') Find map ids based on search term. Sign-in to search for private groups.
+                                        span
+                                            input(name="mapFinder", id="mapFinder", ng-model="searchTermMap",
+                                                ng-enter="findArcGISGroupMaps()")
+                                            input(name="mapFinderSubmit",  ng-disabled='findMapDisabled', type="submit",
+                                                value="Submit", id="mapFinderSubmit",
+                                                class='btn', ng-click="findArcGISGroupMaps();")
+
+                                        div(id='gridpaneMap', style="overflow: hidden; padding: 3px;background-color:#6E9096;", ng-style="getGridStyleWrapper()")
+                                            div(id="mapGridId", ng-grid="gridMapOptions", ng-style="getGridStyleMap()", style="margin:1px;")
+
+
+                div(class="card")
+                    div(class="card-header", role="tab", id="idsharingInstructionHeader")
+                        button(class="btn", data-toggle="collapse",
+                            ng-click="onShowHideMapLinkrClicked('shareinst')",
+                            data-target="#idsharingInstructionCard", aria-expanded="false",
+                            aria-controls="idsharingInstructionCard")
+                            span
+                            | Sharing Overview
+                            img(class='accdionchevron-right',
+                                ng-class="{'accdionchevron-right': mldata['shareinst'].isCollapsed, \
+                                'accdionchevron-down': !mldata['shareinst'].isCollapsed}")
+
+                    div(id="idsharingInstructionCard", class="card-collapse collapse", role="tabpanel",
+                        uib-collapse="mldata['shareinst'].isCollapsed",
+                        aria-labelledby="idsharingInstructionHeader")
+                        div(class="card card-block")
+
+                            h3 Concepts and Features
+
+                            p(style='font-size:1.25em;margin:0.3em').
+                                Multiple users can view synchronized maps in web browsers on other devices.  After  finding (1) a Google Map or Leaflet Map or (2) an ArcGIS WebMap that you want to share:
+
+                            h5 For Google or Leaflet Map
+
+                            p(style='font-size:1.25em;margin:0.3em').
+                                After selecting a map exent and zoom level (and optionally performing a spatial query using the Google search too), perform two steps:
+
+                            ul#StepsForPublishing(style="height:100%")
+
+                                li(class="acc li") 1. If you haven't subscribed to a Pusher channel or entered a user/collaborator name, open the "Set Pusher Channel" accordion pane, and follow the instructions to enter these details.
+                                li(class="acc li") 2. Open the "Publish Current Url" accordion pane and click the "Publish Url" button.  This will open a new window with the current zoom, extent, and search returns on the publisher's system, and will open the same new window on all collaborators' systems.
+
+                            h5 For ArcGIS Online Webmap
+
+                            ul#StepsSharing(style="height:100%")
+
+                                li(class="acc li") 1. Open the "Copy MapLinkr Url" accordion pane.
+                                    The url for the current host site will be inserted in the text field
+                                    and will be focused and selected.
+                                li(class="acc li") 2. Use Ctrl-C to copy it to the clipboard.
+                                li(class="acc li") 3. Paste the link in a text message or email to collaborators
+                                    or in a shared chat window.
+
+                            p(style='font-size:1.25em;margin:0.3em').
+                                The url includes the name of the Pusher channel that you have selected.
+                                As users open  the link, they will be subscribing to share map clicks,
+                                pans and zooms with all other users as any user manipulates any map view.
+
+                            br
+                            p(style='font-size:1.25em;margin:0.3em').
+                                The Pusher channel can also be set without opening a new map viewer by
+                                opening the "Set  Pusher Channel" accordion pane.  Share this channel name with
+                                collaborators to synchronize their displays with your display.  This step is
+                                necessary if you and your collaborators want to synchronize map views where all
+                                collaborators already have synchronize-capable maps open.
+
+                            br
+                            p(style='font-size:1.25em;margin:0.3em').
+                                At any time a user has opened a new ArcGIS map and desires to share the map
+                                with collaborators, the "Publish Current Url" pane provides the necessary tool.
+                                The user opens the accordion pane in the window containing the map to be shared and
+                                clicks the "Publish Url" button.
+
+                            br
+
+                div(class="card")
+                    div(class="card-header", role="tab", id="idUrlCopyHeader")
+                        button(class="btn", data-toggle="collapse",
+                            ng-click="onShowHideMapLinkrClicked('copyurl')",
+                            data-target="#idUrlCopyCard", aria-expanded="false",
+                            aria-controls="idUrlCopyCard")
+                            span
+                            | Share Maps
+                            img(class='accdionchevron-right',
+                                ng-class="{'accdionchevron-right': mldata['copyurl'].isCollapsed, \
+                                'accdionchevron-down': !mldata['copyurl'].isCollapsed}")
+
+                    div(id="idUrlCopyCard", class="card-collapse collapse", role="tabpanel",
+                        uib-collapse="mldata['copyurl'].isCollapsed",
+                        aria-labelledby="idUrlCopyHeader")
+                        div(class="card card-block")
+                                div(name="emailForm")
+                                    label(style='font-size:12pt;margin:4px').
+                                        Fetch the link to the current ArcGIS Online map:
+                                    button(class="btn", style='width:100%;', ng-click="fetchUrl()", value="Copy Url to Clipboard") Copy Url to Clipboard
+
+                                    #UrlInstructions(style="display:none")
+                                        label(style='font-size:12pt;margin:2px').The url is now focused and selected.
+                                        label(style='font-size:12pt;margin:2px').Now use Ctrl-C to copy to clipboard.
+                                        label(style='font-size:12pt;margin:2px').Then paste the link into an email, text message, or chat session.
+
+                                    textarea(id="UrlCopyFieldID", type="url", name="input", style="overflow-y: scroll; overflow-x: none; resize: none; width: 100%; height: 120px;", required)
+
+                div(class="card")
+                    div(class="card-header", role="tab", id="idChannelSetterHeader")
+                        button(class="btn", data-toggle="collapse",
+                            ng-click="onShowHideMapLinkrClicked('setchannel')",
+                            data-target="#idChannelSetterCard", aria-expanded="false",
+                            aria-controls="idChannelSetterCard")
+                            span
+                            | Set Channel
+                            img(class='accdionchevron-right',
+                                ng-class="{'accdionchevron-right': mldata['setchannel'].isCollapsed, \
+                                'accdionchevron-down': !mldata['setchannel'].isCollapsed}")
+
+                    div(id="idChannelSetterCard", class="card-collapse collapse", role="tabpanel",
+                        uib-collapse="mldata['setchannel'].isCollapsed",
+                        aria-labelledby="idChannelSetterHeader")
+                        div(class="card card-block")
+                            div
+                                p(style='font-size:1.25em;margin:0.3em').
+                                    Set or change the Pusher communications channel.
+                                button(class="btn", style='width:100%;', ng-click="displayPusherDialog()", value="Set Channel") Set Channel
+                            #PusherChannelDialog
+
+                div(class="card")
+                    div(class="card-header", role="tab", id="idPublishUrlHeader")
+                        button(class="btn", data-toggle="collapse",
+                            ng-click="onShowHideMapLinkrClicked('publishurl')",
+                            data-target="#idPublishUrlCard", aria-expanded="false",
+                            aria-controls="idPublishUrlCard")
+                            span
+                            | Publish Url
+                            img(class='accdionchevron-right',
+                                ng-class="{'accdionchevron-right': mldata['publishurl'].isCollapsed, \
+                                'accdionchevron-down': !mldata['publishurl'].isCollapsed}")
+
+                    div(id="idPublishUrlCard", class="card-collapse collapse", role="tabpanel",
+                        uib-collapse="mldata['publishurl'].isCollapsed",
+                        aria-labelledby="idPublishUrlHeader")
+                        div(class="card card-block")
+                            div
+                                p(style='font-size:1.25em;margin:0.3em').
+                                    Publish the current map Url to Pusher communications channel subscribers.
+                                button(class="btn", style='width:100%;', ng-click="publishUrl()", value="Publish Url") Publish Url
+
+                div(class="card")
+                    div(class="card-header", role="tab", id="idPositionViewHeader")
+                        button(class="btn", data-toggle="collapse",
+                            ng-click="onShowHideMapLinkrClicked('positionview')",
+                            data-target="#idPositionViewCard", aria-expanded="false",
+                            aria-controls="idPositionViewCard")
+                            span
+                            | Current Position
+                            img(class='accdionchevron-right',
+                                ng-class="{'accdionchevron-right': mldata['positionview'].isCollapsed, \
+                                'accdionchevron-down': !mldata['positionview'].isCollapsed}")
+
+                    div(id="idPositionViewCard", class="card-collapse collapse", role="tabpanel",
+                        uib-collapse="mldata['positionview'].isCollapsed",
+                        aria-labelledby="idPositionViewHeader")
+                        div(class="card card-block")
+                            #idNavPos
+
+                                div.
+                                    {{currentTab.site}}
+                                div(class="posViewVisible flex0pt6")
+                                  input(id = 'mppos', type='text', name='cursPos', disabled, ng-model="positionView", style='font-size:0.65em;text-align:right;margin-right: 0.5em; padding: 0.01em 0.5em 0.01em 0.5em;')
+                                div(class="posViewVisible")
+                                  select(ng-model="currentViewOption", ng-options="option.type for option in viewOptions", ng-change="setPostionDisplayType()", style="font-size:0.75em; margin-right: 0.5em; padding: 0.01em 0.5em 0.01em 0.5em;")

@@ -172,6 +172,31 @@
                     'isCollapsed' : true,
                     'subtext' : ""
                 },
+
+                'maps' : {
+                    'isCollapsed' : true,
+                    'subtext' : ""
+                },
+                'shareinst' : {
+                    'isCollapsed' : true,
+                    'subtext' : ""
+                },
+                'copyurl' : {
+                    'isCollapsed' : true,
+                    'subtext' : ""
+                },
+                'setchannel' : {
+                    'isCollapsed' : true,
+                    'subtext' : ""
+                },
+                'publishurl' : {
+                    'isCollapsed' : true,
+                    'subtext' : ""
+                },
+                'positionview' : {
+                    'isCollapsed' : true,
+                    'subtext' : ""
+                },
                 'callback' : null
             };
 /*
