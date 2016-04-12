@@ -94,22 +94,65 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
                                     li(class="acc li") 2. The group pane displays groups matching the search term.  Click on one of the groups.
                                     li(class="acc li") 3. The map selection pane opens showing available maps in the group.  Click on a map item.  A dialog opens offering a choice of three possible destination viewers where the selected map can be displayed.  The most convenient option is usually the "New Window" option.
 
-                                div(id="repeater", ng-repeat="(key, val) in mldata.using.destchoices", class="ng-scope")
-                                    div(class="card")
-                                        div(class="card-header", role="tab", id="destHeader{{key}}")
-                                            button(class="btn", data-toggle="collapse",
-                                                ng-click="onShowHideDestChoiceClicked(key)",
-                                                data-target="#destChoice{{key}}", aria-expanded="false",
-                                                aria-controls="destChoice{{key}}")
-                                                span
-                                                | Choice {{key}}
-                                                img(class='accdionchevron-right',
-                                                    ng-class="{'accdionchevron-right': mldata.using.current['{{key}}'], \
-                                                    'accdionchevron-down': !mldata.using.current['{{key}}']}")
+                                        div(id="repeater", ng-repeat="(key, val) in mldata.using.destchoices", class="ng-scope")
+                                            div(class="card")
+                                                div(class="card-header", role="tab", id="destHeader{{key}}")
+                                                    button(class="btn", data-toggle="collapse",
+                                                        ng-click="onShowHideDestChoiceClicked(key)",
+                                                        data-target="#destChoice{{key}}", aria-expanded="false",
+                                                        aria-controls="destChoice{{key}}")
+                                                        span
+                                                        | Choice {{key}}
+                                                        img(class='accdionchevron-right',
+                                                            ng-class="{'accdionchevron-right': mldata.using.current['{{key}}'], \
+                                                            'accdionchevron-down': !mldata.using.current['{{key}}']}")
 
-                                            div(id="destChoice{{key}}", class="card-collapse in collapse", role="tabpanel",
-                                                uib-collapse="mldata.using.current['{{key}}']",
-                                                aria-labelledby="destHeader{{key}}")
-                                                div(class="card card-block")
-                                                    div(class="container")
-                                                    | {{val.details.text}}
+                                                    div(id="destChoice{{key}}", class="card-collapse in collapse", role="tabpanel",
+                                                        uib-collapse="mldata.using.current['{{key}}']",
+                                                        aria-labelledby="destHeader{{key}}")
+                                                        div(class="card card-block")
+                                                            div(class="container")
+                                                            | {{val.details.text}}
+
+                                    li(class="acc li") 4. Create a Pusher channel.  A second dialog opens, requesting a Pusher channel name.  Specify a name that  will be unique for the shared session.
+
+                                h3( style="text-align:left;") Experiment with synchronized maps:
+
+                                ul#StepsListSynch(style="height:100%;")
+
+                                    li(class="acc li", style="font-weight:bolder") a. Resize and move any open map viewer windows so that they are simultaneously visible.
+                                    li(class="acc li", style="font-weight:bolder") b. Pan and zoom any map.  Maps in other synchronized viewers should pan and zoom to the same location and scale.
+                                    li(class="acc li", style="font-weight:bolder") c. Click on any open map.  A popup will show either information for the item at the map location or the coordinates/address of the click.  A popup will appear at the same location in other map viewers with location information at the same point.
+
+                div(class="card")
+                    div(class="card-header", role="tab", id="idGroupSearcher")
+                        button(class="btn", data-toggle="collapse",
+                            ng-click="onShowHideMapLinkrClicked('groups')",
+                            data-target="#idGroupSearcherCard", aria-expanded="false",
+                            aria-controls="idGroupSearcherCard")
+                            span
+                            | AGO Group Search
+                            img(class='accdionchevron-right',
+                                ng-class="{'accdionchevron-right': mldata['groups'].isCollapsed, \
+                                'accdionchevron-down': !mldata['groups'].isCollapsed}")
+
+                    div(id="idGroupSearcherCard", class="card-collapse collapse", role="tabpanel",
+                        uib-collapse="mldata['groups'].isCollapsed",
+                        aria-labelledby="idGroupSearcher")
+                        div(class="card card-block")
+                            div(class="container")
+
+                                #SearchGroup
+                                    div(id="searchToolWrapperGroup")
+                                        span
+                                            label(id='grpSearchLabel', for='signInGroup', style='font-size:12pt;') AGO Group Search
+
+                                            input(type="button", class="btn", id="signInGroup", name="signInGroup", ng-click='signInFromGroupTab();', style='width:30%;font-size:80%', value='{{signInOutGrp}}')
+
+                                        h5(id="grpSrchInstId", style='padding:2px 3px;margin: 2px 3px;') Find group ids based on search term. Sign-in to search for private groups.
+                                        span
+                                            input(name="groupFinder", id="groupFinder", ng-model="searchTermGrp", ng-enter="findArcGISGroup();")
+                                            input(name="groupFinderSubmit", ng-disabled='findGrpDisabled', type="submit", value="Submit", id="groupFinderSubmit", class='btn', ng-click="findArcGISGroup();")
+
+                                        div(id='gridpaneGroup', style="overflow: hidden; padding: 3px;background-color:#6E9096;", ng-style="getGridStyleWrapper()")
+                                            div(id="grpGridId", ng-grid="gridGrpOptions", ng-style="getGridStyleGroup()", style="margin:1px;")

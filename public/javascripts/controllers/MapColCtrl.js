@@ -163,8 +163,14 @@
                                      a synchronized map viewer.  If  popups are turned off, \
                                      use sequence described under the \'New Tab\' option above.'
                             }
-                        }
+                        },
+
                     }
+
+                },
+                'groups' : {
+                    'isCollapsed' : true,
+                    'subtext' : ""
                 },
                 'callback' : null
             };
