@@ -22,6 +22,7 @@
             $scope.mldata = {};
 
             $scope.mldata = data.callback();
+            $scope.mldata.using['current'] = { 'Same Window' : true, 'New Tab' : true, 'New Window' : true};
 
             $scope.onShowHideMapLinkrClicked = function (clickedItem) {
                 var collapseTest = $scope.mldata[clickedItem].isCollapsed,
@@ -38,19 +39,26 @@
 
             $scope.onShowHideDestChoiceClicked = function (clickedItem) {
                 var collapseTest = $scope.mldata.using.destchoices[clickedItem].details.isCollapsed,
-                    itm = '';
+                    itm = '',
+                    strBefore = "test " + clickedItem + " against ",
+                    strAfter =  "next " + clickedItem + " against ";
                 if (collapseTest === true) {
                     for (itm in $scope.mldata.using.destchoices) {
-                        console.log('test ' + itm + ' against ' + clickedItem);
-                        console.log($scope.mldata.using.destchoices[itm].details.isCollapsed)
+                        strBefore += " " + itm + " " + $scope.mldata.using.destchoices[itm].details.isCollapsed;
+                        // console.log('test ' + itm + ' against ' + clickedItem);
+                        // console.log($scope.mldata.using.destchoices[itm].details.isCollapsed)
                         if (itm !== clickedItem && $scope.mldata.using.destchoices[itm].details.isCollapsed === false) {
                             $scope.mldata.using.destchoices[itm].details.isCollapsed = true;
+                            $scope.mldata.using.current[itm] = true;
                         }
+                        strAfter += " " + itm + " " + $scope.mldata.using.destchoices[itm].details.isCollapsed;
                     }
+                    console.log(strBefore)
+                    console.log(strAfter);
                  }
                 $scope.mldata.using.destchoices[clickedItem].details.isCollapsed = !$scope.mldata.using.destchoices[clickedItem].details.isCollapsed;
-                console.log("ShowHide " + clickedItem)
-                console.log("is now " + $scope.mldata.using.destchoices[clickedItem].details.isCollapsed)
+                $scope.mldata.using.current[clickedItem] = !$scope.mldata.using.current[clickedItem];
+                console.log("ShowHide " + clickedItem + " is now " + $scope.mldata.using.destchoices[clickedItem].details.isCollapsed)
             };
 
             $scope.accept = function () {

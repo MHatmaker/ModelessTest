@@ -134,16 +134,16 @@
                 'using' : {
                     'isCollapsed' : true,
                     'destchoices' : {
-                        'sameWindow' : {
-                            'choice' : 'sameWindow',
+                        'Same Window' : {
+                            'choice' : 'Same Window',
                             'details' : {
                                 'isCollapsed' : true,
                                 'text' : 'The newly selected map replaces the current map in the map viewer to the left.'
                             }
                         },
 
-                        'newTab' : {
-                            'choice' : 'newTab',
+                        'New Tab' : {
+                            'choice' : 'New Tab',
                             'details' : {
                                 'isCollapsed' : true,
                                 'text' : 'The newly selected map opens in a new tab in the current browser. \
@@ -153,8 +153,8 @@
                             }
                         },
 
-                        'newWindow' : {
-                            'choice' : 'newWindow',
+                        'New Window' : {
+                            'choice' : 'New Window',
                             'details' : {
                                 'isCollapsed' : true,
                                 'text' : 'The newly selected map is opened in a map viewer in a \
