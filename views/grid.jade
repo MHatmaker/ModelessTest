@@ -1,12 +1,11 @@
 extends index
 
 block content
-    div(class="SummaryVisible", ng-controller="SummaryCtrl")
-        div(ng-controller="TopRowCtrl", ng-click="onExpandClicked()")
-            span(style='cursor: pointer; cursor: hand;')
-                figure(style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;")
-                    img(src="../images/Expand.png", id='ExpandSumImgId', class="expandoimage", style="margin: 0.01em 0.5em  0.01em  0.05em;")
-                    figcaption(class="btn", style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;font-weight: 800;") Expand/Shrink Summary Master Website Options
+    div(class="SummaryVisible", ng-controller="SummaryCtrl", class="col-xs-12")
+        div(ng-controller="TopRowCtrl", ng-click="onExpandClicked()", style='cursor: pointer; cursor: hand;')
+            div(class="row")
+                img(class="col-xs-2 col-md-1", src="../images/Expand.png", id='ExpandSumImgId', class="expandoimage", style="margin: 0.01em 0.5em  0.01em  0.05em;")
+                textarea(class="col-xs-9 col-md-10", style="resize: none; overflow-y: hidden;") Expand/Shrink Summary Master Website Options
 
         div(style="display:{{$parent.row2Showing}}", ng-controller="Row2Ctrl")
             div(class="row")
@@ -25,7 +24,7 @@ block content
                 include stuffing.jade
                 include stuffing.jade
 
-            div(ng-controller="MapColCtrl", class="{{mapColDef}}")
+            div(ng-controller="MapColCtrl", class="{{mapColDef}}", class="col-xs-12")
                 div(class="row")
                     div(class="col-xs-6")
                         figure(style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;", ng-click="onExpandClicked()")
@@ -40,7 +39,7 @@ block content
                             style="margin-top: 0.01em;") Toggle MapLinkr
 
                 div(class="row")
-                    div(ng-controller="MapViewCtrl", id="MapViewCtrlId")
+                    div(ng-controller="MapViewCtrl", id="MapViewCtrlId", class="col-sx-12")
                         div(class="card", style="overflow-x: auto; overflow-y: auto;")
                             img(class="card-img-top", src="../images/ChiMap.png")
 
