@@ -1,3 +1,24 @@
+mixin collapseGroup(groupId, cardId, groupname, heading)
+
+    div(class="card")
+        div(class="card-header", role="tab", id="#{groupId}")
+            button(class="btn", data-toggle="collapse",
+                ng-click="onShowHideMapLinkrClicked('#{groupname}')",
+                data-target="#{cardId}", aria-expanded="false",
+                aria-controls="#{cardId}")
+                span
+                | #{heading}
+                img(class='accdionchevron-right',
+                    ng-class="{'accdionchevron-right': mldata['#{groupname}'].isCollapsed, \
+                    'accdionchevron-down': !mldata['#{groupname}'].isCollapsed}")
+
+        div(id="#{cardId}", class="card-collapse collapse", role="tabpanel",
+            uib-collapse="mldata['#{groupname}'].isCollapsed",
+            aria-labelledby="#{groupId}")
+            div(class="card card-block")
+                div(class="container")
+                    block
+
 
 div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
     aria-labelledby="mapLinkrLabel", aria-hidden="true")
@@ -11,23 +32,7 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
 
         div(class="modal-body")
             div(id="mapLinkrInfo", role="tablist", aria-multiselectable="true")
-                div(class="card")
-                    div(class="card-header", role="tab", id="idLatestNews")
-                        button(class="btn", data-toggle="collapse",
-                            ng-click="onShowHideMapLinkrClicked('news')",
-                            data-target="#idLatestNewsCard", aria-expanded="false",
-                            aria-controls="idLatestNewsCard")
-                            span
-                            | MapLinkr News
-                            img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['news'].isCollapsed, \
-                                'accdionchevron-down': !mldata['news'].isCollapsed}")
-
-                    div(id="idLatestNewsCard", class="card-collapse collapse", role="tabpanel",
-                        uib-collapse="mldata['news'].isCollapsed",
-                        aria-labelledby="idLatestNews")
-                        div(class="card card-block")
-                            div(class="container")
+                +collapseGroup('idLatestNews', 'idLatestNewsCard', 'news', 'MapLinkr News')
                                 div(style='font-size:1.25em;border:2px solid red;margin:1px;padding:2px;')
                                     h4(style="color:red") Latest Release
                                     h5(style="color:red")
@@ -46,23 +51,7 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
                                     Wallace and Gromit have improved the efficiency of their window washing service by incorporating community maps of reported dirty windows.
                                 br
 
-                div(class="card")
-                    div(class="card-header", role="tab", id="idUsingMapLinkr")
-                        button(class="btn", data-toggle="collapse",
-                            ng-click="onShowHideMapLinkrClicked('using')",
-                            data-target="#idUsingMapLinkrCard", aria-expanded="false",
-                            aria-controls="idUsingMapLinkrCard")
-                            span
-                            | Using MapLinkr
-                            img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['using'].isCollapsed, \
-                                'accdionchevron-down': !mldata['using'].isCollapsed}")
-
-                    div(id="idUsingMapLinkrCard", class="card-collapse collapse", role="tabpanel",
-                        uib-collapse="mldata['using'].isCollapsed",
-                        aria-labelledby="idUsingMapLinkr")
-                        div(class="card card-block")
-                            div(class="container")
+                +collapseGroup('idUsingMapLinkr', 'idUsingMapLinkrCard', 'using', 'Using MapLinkr')
 
                                 p(style='font-size:1.1em;margin:0.3em')
                                     | MapLinkr allows viewing mulitple synchronized maps in separate windows.  The maps can use
@@ -124,23 +113,7 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
                                     li(class="acc li", style="font-weight:bolder") b. Pan and zoom any map.  Maps in other synchronized viewers should pan and zoom to the same location and scale.
                                     li(class="acc li", style="font-weight:bolder") c. Click on any open map.  A popup will show either information for the item at the map location or the coordinates/address of the click.  A popup will appear at the same location in other map viewers with location information at the same point.
 
-                div(class="card")
-                    div(class="card-header", role="tab", id="idGroupSearcher")
-                        button(class="btn", data-toggle="collapse",
-                            ng-click="onShowHideMapLinkrClicked('groups')",
-                            data-target="#idGroupSearcherCard", aria-expanded="false",
-                            aria-controls="idGroupSearcherCard")
-                            span
-                            | AGO Group Search
-                            img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['groups'].isCollapsed, \
-                                'accdionchevron-down': !mldata['groups'].isCollapsed}")
-
-                    div(id="idGroupSearcherCard", class="card-collapse collapse", role="tabpanel",
-                        uib-collapse="mldata['groups'].isCollapsed",
-                        aria-labelledby="idGroupSearcher")
-                        div(class="card card-block")
-                            div(class="container")
+                +collapseGroup('idGroupSearcher', 'idGroupSearcherCard', 'groups', 'AGO Group Search')
 
                                 #SearchGroup
                                     div(id="searchToolWrapperGroup")
@@ -157,24 +130,8 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
                                         div(id='gridpaneGroup', style="overflow: hidden; padding: 3px;background-color:#6E9096;", ng-style="getGridStyleWrapper()")
                                             div(id="grpGridId", ng-grid="gridGrpOptions", ng-style="getGridStyleGroup()", style="margin:1px;")
 
+                +collapseGroup('idMapSearcher', 'idMapSearcherCard', 'maps', 'AGO Map Search')
 
-                div(class="card")
-                    div(class="card-header", role="tab", id="idMapSearcher")
-                        button(class="btn", data-toggle="collapse",
-                            ng-click="onShowHideMapLinkrClicked('maps')",
-                            data-target="#idMapSearcherCard", aria-expanded="false",
-                            aria-controls="idMapSearcherCard")
-                            span
-                            | AGO Map Search
-                            img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['maps'].isCollapsed, \
-                                'accdionchevron-down': !mldata['maps'].isCollapsed}")
-
-                    div(id="idMapSearcherCard", class="card-collapse collapse", role="tabpanel",
-                        uib-collapse="mldata['maps'].isCollapsed",
-                        aria-labelledby="idMapSearcher")
-                        div(class="card card-block")
-                            div(class="container")
                                 #SearchMap
                                     div(id="searchToolWrapperMap")
                                         span
@@ -195,23 +152,7 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
                                         div(id='gridpaneMap', style="overflow: hidden; padding: 3px;background-color:#6E9096;", ng-style="getGridStyleWrapper()")
                                             div(id="mapGridId", ng-grid="gridMapOptions", ng-style="getGridStyleMap()", style="margin:1px;")
 
-
-                div(class="card")
-                    div(class="card-header", role="tab", id="idsharingInstructionHeader")
-                        button(class="btn", data-toggle="collapse",
-                            ng-click="onShowHideMapLinkrClicked('shareinst')",
-                            data-target="#idsharingInstructionCard", aria-expanded="false",
-                            aria-controls="idsharingInstructionCard")
-                            span
-                            | Sharing Overview
-                            img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['shareinst'].isCollapsed, \
-                                'accdionchevron-down': !mldata['shareinst'].isCollapsed}")
-
-                    div(id="idsharingInstructionCard", class="card-collapse collapse", role="tabpanel",
-                        uib-collapse="mldata['shareinst'].isCollapsed",
-                        aria-labelledby="idsharingInstructionHeader")
-                        div(class="card card-block")
+                +collapseGroup('idSharingInstructionsHeader', 'idSharingInstructionsCard', 'shareinst', 'Sharing Overview')
 
                             h3 Concepts and Features
 
@@ -261,22 +202,7 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
 
                             br
 
-                div(class="card")
-                    div(class="card-header", role="tab", id="idUrlCopyHeader")
-                        button(class="btn", data-toggle="collapse",
-                            ng-click="onShowHideMapLinkrClicked('copyurl')",
-                            data-target="#idUrlCopyCard", aria-expanded="false",
-                            aria-controls="idUrlCopyCard")
-                            span
-                            | Share Maps
-                            img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['copyurl'].isCollapsed, \
-                                'accdionchevron-down': !mldata['copyurl'].isCollapsed}")
-
-                    div(id="idUrlCopyCard", class="card-collapse collapse", role="tabpanel",
-                        uib-collapse="mldata['copyurl'].isCollapsed",
-                        aria-labelledby="idUrlCopyHeader")
-                        div(class="card card-block")
+                +collapseGroup('idUrlCopyHeader', 'idUrlCopyCard', 'copyurl', 'Share Maps')
                                 div(name="emailForm")
                                     label(style='font-size:12pt;margin:4px').
                                         Fetch the link to the current ArcGIS Online map:
@@ -289,65 +215,21 @@ div(class="modeless col-sm-12 col-sx-10", id="idMapLinkrPlugin", role="dialog",
 
                                     textarea(id="UrlCopyFieldID", type="url", name="input", style="overflow-y: scroll; overflow-x: none; resize: none; width: 100%; height: 120px;", required)
 
-                div(class="card")
-                    div(class="card-header", role="tab", id="idChannelSetterHeader")
-                        button(class="btn", data-toggle="collapse",
-                            ng-click="onShowHideMapLinkrClicked('setchannel')",
-                            data-target="#idChannelSetterCard", aria-expanded="false",
-                            aria-controls="idChannelSetterCard")
-                            span
-                            | Set Channel
-                            img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['setchannel'].isCollapsed, \
-                                'accdionchevron-down': !mldata['setchannel'].isCollapsed}")
-
-                    div(id="idChannelSetterCard", class="card-collapse collapse", role="tabpanel",
-                        uib-collapse="mldata['setchannel'].isCollapsed",
-                        aria-labelledby="idChannelSetterHeader")
-                        div(class="card card-block")
+                +collapseGroup('idChannelSetterHeader', 'idChannelSetterCard', 'setchannel', 'Set Channel')
                             div
                                 p(style='font-size:1.25em;margin:0.3em').
                                     Set or change the Pusher communications channel.
                                 button(class="btn", style='width:100%;', ng-click="displayPusherDialog()", value="Set Channel") Set Channel
                             #PusherChannelDialog
 
-                div(class="card")
-                    div(class="card-header", role="tab", id="idPublishUrlHeader")
-                        button(class="btn", data-toggle="collapse",
-                            ng-click="onShowHideMapLinkrClicked('publishurl')",
-                            data-target="#idPublishUrlCard", aria-expanded="false",
-                            aria-controls="idPublishUrlCard")
-                            span
-                            | Publish Url
-                            img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['publishurl'].isCollapsed, \
-                                'accdionchevron-down': !mldata['publishurl'].isCollapsed}")
+                +collapseGroup('idPublishUrlHeader', 'idPublishUrlCard', 'publishurl', 'Publish Url')
 
-                    div(id="idPublishUrlCard", class="card-collapse collapse", role="tabpanel",
-                        uib-collapse="mldata['publishurl'].isCollapsed",
-                        aria-labelledby="idPublishUrlHeader")
-                        div(class="card card-block")
                             div
                                 p(style='font-size:1.25em;margin:0.3em').
                                     Publish the current map Url to Pusher communications channel subscribers.
                                 button(class="btn", style='width:100%;', ng-click="publishUrl()", value="Publish Url") Publish Url
 
-                div(class="card")
-                    div(class="card-header", role="tab", id="idPositionViewHeader")
-                        button(class="btn", data-toggle="collapse",
-                            ng-click="onShowHideMapLinkrClicked('positionview')",
-                            data-target="#idPositionViewCard", aria-expanded="false",
-                            aria-controls="idPositionViewCard")
-                            span
-                            | Current Position
-                            img(class='accdionchevron-right',
-                                ng-class="{'accdionchevron-right': mldata['positionview'].isCollapsed, \
-                                'accdionchevron-down': !mldata['positionview'].isCollapsed}")
-
-                    div(id="idPositionViewCard", class="card-collapse collapse", role="tabpanel",
-                        uib-collapse="mldata['positionview'].isCollapsed",
-                        aria-labelledby="idPositionViewHeader")
-                        div(class="card card-block")
+                +collapseGroup('idPositionViewHeader', 'idPositionViewCard', 'positionview', 'Current Position')
                             #idNavPos
 
                                 div.
