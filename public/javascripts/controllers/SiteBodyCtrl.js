@@ -19,7 +19,8 @@
                 mpvleft = mapview.offsetLeft + 10;
 
             $scope.data = {
-                expanded : false
+                expanded : false,
+                shrinkgrowtext : "Expand Map"
             };
 
             $scope.leftColShowing = 'block';
@@ -29,14 +30,17 @@
             $scope.onExpandClicked = function () {
                 if ($scope.data.expanded === true) {
                     $scope.data.expanded = false;
-                    $scope.leftColShowing = 'none';
-                    $scope.rightColShowing = 'none';
-                    $scope.mapColDef = "col-xs-12";
-                } else {
-                    $scope.data.expanded = true;
                     $scope.leftColShowing = 'block';
                     $scope.rightColShowing = 'block';
                     $scope.mapColDef = "col-xs-12 col-sm-6 col-md-4";
+                    $scope.data.shrinkgrowtext = "Expand Map";
+
+                } else {
+                    $scope.data.expanded = true;
+                    $scope.leftColShowing = 'none';
+                    $scope.rightColShowing = 'none';
+                    $scope.mapColDef = "col-xs-12";
+                    $scope.data.shrinkgrowtext = "Shrink Map";
                 }
             };
 

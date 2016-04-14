@@ -35,7 +35,53 @@ a {
     width: 25px;
     height:25px;
 }
+/*
+.expandoimage {
+    height: 1.3em;
+    width : 1.3em;
+    float : left;
+}
 
+  @media all and (max-width: 350px) {
+     .body {
+          font-size:0.5em;
+      }
+    .expandoimage {
+        height: 1.1em;
+        width : 1.1em;
+    }
+    .btn{
+       font-size: 0.75em;
+    }
+  }
+*/
+
+.expando-grow {
+    /*clip-path: inset(2px 2px 2px 2px);*/
+    -webkit-clip-path: inset(2px 2px 2px 2px);
+    background-image: url(images/Expand.png);
+    background-color: #6E9096;
+    background-size: 100% 100%;
+    width: 25px;
+    height:25px;
+    display: inline-block;
+}
+
+    /*
+    .container-mapcol    {
+      flex: 2;
+      }
+      */
+.expando-shrink {
+    /*clip-path: inset(2px 2px 2px 2px);*/
+    -webkit-clip-path: inset(2px 2px 2px 2px);
+    background-image: url(images/Collapse.png);
+    background-color: #6E9096;
+    background-size: 100% 100%;
+    width: 25px;
+    height:25px;
+    display:inline-block;
+}
 /*
  * Row with equal height columns
  * --------------------------------------------------
