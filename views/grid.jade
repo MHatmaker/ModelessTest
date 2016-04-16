@@ -2,10 +2,13 @@ extends index
 
 block content
     div(class="SummaryVisible", ng-controller="SummaryCtrl", class="col-xs-12")
-        div(ng-controller="TopRowCtrl", ng-click="onExpandClicked()", style='cursor: pointer; cursor: hand;')
-            div(class="row")
-                img(class="col-xs-2 col-md-1", src="../images/Expand.png", id='ExpandSumImgId', class="expandoimage", style="margin: 0.01em 0.5em  0.01em  0.05em;")
-                textarea(class="col-xs-9 col-md-10", style="resize: none; overflow-y: hidden;") Expand/Shrink Summary Master Website Options
+        div(ng-controller="TopRowCtrl", style='cursor: pointer; cursor: hand;')
+            button(type"button", class="btn btn-labeled btn-primary",
+                ng-click="onExpandClicked()")
+                span(class="btn-label")
+                    i(class="fa fa-expand fa-lg", ng-class="{'fa-expand': !$parent.data.expanded, \
+                    'fa-compress': $parent.data.expanded}")
+                | {{$parent.data.heading}}
 
         div(style="display:{{$parent.row2Showing}}", ng-controller="Row2Ctrl")
             div(class="row")

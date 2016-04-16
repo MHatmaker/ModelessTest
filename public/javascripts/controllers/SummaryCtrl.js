@@ -13,16 +13,19 @@
             console.log("in SummaryCtrl");
 
             $scope.data = {
-                expanded : true
+                expanded : true,
+                heading : "Shrink Summary Master Website Options"
             };
             $scope.row2Showing = 'block';
 
             $scope.onExpandClicked = function () {
                 if ($scope.data.expanded === true) {
                     $scope.data.expanded = false;
+                    $scope.data.heading = "Show Master Website Options";
                     $scope.row2Showing = 'none';
                 } else {
                     $scope.data.expanded = true;
+                    $scope.data.heading = "Shrink Master Website Options";
                     $scope.row2Showing = 'block';
                 }
             };
