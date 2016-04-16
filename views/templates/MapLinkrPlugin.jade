@@ -2,15 +2,14 @@ mixin collapseGroup(groupId, cardId, groupname, heading)
 
     div(class="card")
         div(class="card-header", role="tab", id="#{groupId}")
-            button(class="btn", data-toggle="collapse",
+            button(type="button", class="btn btn-labelled btn-primary", data-toggle="collapse",
                 ng-click="onShowHideMapLinkrClicked('#{groupname}')",
                 data-target="#{cardId}", aria-expanded="false",
                 aria-controls="#{cardId}")
-                span
+                span(class="btn-label")
+                    i(class="fa fa-expand fa-lg", ng-class="{'fa-expand': mldata['#{groupname}'].isCollapsed, \
+                    'fa-compress': !mldata['#{groupname}'].isCollapsed}")
                 | #{heading}
-                img(class='accdionchevron-right',
-                    ng-class="{'accdionchevron-right': mldata['#{groupname}'].isCollapsed, \
-                    'accdionchevron-down': !mldata['#{groupname}'].isCollapsed}")
 
         div(id="#{cardId}", class="card-collapse collapse", role="tabpanel",
             uib-collapse="mldata['#{groupname}'].isCollapsed",
@@ -86,15 +85,14 @@ div(class="modeless col-sm-12 col-xs-12", id="idMapLinkrPlugin",
                                         div(id="repeater", ng-repeat="(key, val) in mldata.using.destchoices", class="ng-scope")
                                             div(class="card")
                                                 div(class="card-header", role="tab", id="destHeader{{key}}")
-                                                    button(class="btn", data-toggle="collapse",
+                                                    button(type="button", class="btn btn-labelled btn-primary", data-toggle="collapse",
                                                         ng-click="onShowHideDestChoiceClicked(key)",
                                                         data-target="#destChoice{{key}}", aria-expanded="false",
                                                         aria-controls="destChoice{{key}}")
-                                                        span
+                                                        span(class="btn-label")
+                                                            i(class="fa fa-expand fa-lg", ng-class="{'fa-expand': mldata.using.current['{{key}}'], \
+                                                            'fa-compress': !mldata.using.current['{{key}}']}")
                                                         | Choice {{key}}
-                                                        img(class='accdionchevron-right',
-                                                            ng-class="{'accdionchevron-right': mldata.using.current['{{key}}'], \
-                                                            'accdionchevron-down': !mldata.using.current['{{key}}']}")
 
                                                     div(id="destChoice{{key}}", class="card-collapse in collapse", role="tabpanel",
                                                         uib-collapse="mldata.using.current['{{key}}']",
