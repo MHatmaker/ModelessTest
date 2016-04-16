@@ -26,15 +26,20 @@ block content
 
             div(ng-controller="MapColCtrl", class="{{mapColDef}}", class="col-xs-12")
                 div(class="row")
-                    div(class="nav nav-pills")
+                    div
                         button(type="button", class="btn btn-labeled btn-primary",
                             ng-click="onExpandClicked()")
                             span(class="btn-label")
-                                i(class="fa fa-compress", ng-class="{'fa-expand': $parent.data.expanded, \
-                                'fa-expand': !$parent.data.expanded}")
+                                i(class="fa fa-expand fa-lg", ng-class="{'fa-expand': !$parent.data.expanded, \
+                                'fa-compress': $parent.data.expanded}")
                             | {{$parent.data.shrinkgrowtext}}
 
-                        button(type"button", class="btn btn-primary", ng-click="onMapLinkrClicked()") Toggle MapLinkr
+                        button(type"button", class="btn btn-labeled btn-primary",
+                            ng-click="onMapLinkrClicked()")
+                            span(class="btn-label")
+                                i(class="fa fa-expand fa-lg", ng-class="{'fa-expand': !mldata.isOpen, \
+                                'fa-compress': mldata.isOpen}")
+                            | {{mldata.mapLinkrBtnText}}
 
                 div(class="row")
                     div(ng-controller="MapViewCtrl", id="MapViewCtrlId", class="col-sx-12")

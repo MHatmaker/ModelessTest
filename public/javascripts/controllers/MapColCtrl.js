@@ -197,7 +197,9 @@
                     'isCollapsed' : true,
                     'subtext' : ""
                 },
-                'callback' : null
+                'callback' : null,
+                'isOpen' : false,
+                'mapLinkrBtnText' : 'Show MapLinkr'
             };
 /*
                 itmCollapsed = [
@@ -215,6 +217,8 @@
             $scope.onMapLinkrClicked = function () {
                 console.log("onMapLinkrClicked");
 
+                $scope.mldata.isOpen = true;
+                $scope.mldata.mapLinkrBtnText = "Hide MapLinkr";
                 console.debug($scope.mldata);
 
                 var modalInstance = $uibModal.open({
@@ -233,8 +237,12 @@
                 modalInstance.result.then(function (msg) {
                     console.log("return from showing MapLinkr`dialog");
                     console.log(msg);
+                    $scope.mldata.mapLinkrBtnText = "Show MapLinkr";
+                    $scope.mldata.isOpen = false;
                 }, function () {
                     console.log('MapLinkr Modal dismissed at: ' + new Date());
+                    $scope.mldata.mapLinkrBtnText = "Show MapLinkr";
+                    $scope.mldata.isOpen = false;
                 });
             };
 
