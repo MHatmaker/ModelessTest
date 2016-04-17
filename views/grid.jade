@@ -6,9 +6,9 @@ block content
             button(type"button", class="btn btn-labeled btn-primary",
                 ng-click="onExpandClicked()")
                 span(class="btn-label")
+                    | {{$parent.data.heading}}
                     i(class="fa fa-expand fa-lg", ng-class="{'fa-expand': !$parent.data.expanded, \
-                    'fa-compress': $parent.data.expanded}")
-                | {{$parent.data.heading}}
+                    'fa-compress': $parent.data.expanded}", style="padding-left: 0.5rem")
 
         div(style="display:{{$parent.row2Showing}}", ng-controller="Row2Ctrl")
             div(class="row")
@@ -33,16 +33,16 @@ block content
                         button(type="button", class="btn btn-labeled btn-primary",
                             ng-click="onExpandClicked()")
                             span(class="btn-label")
+                                | {{$parent.data.shrinkgrowtext}}
                                 i(class="fa fa-expand fa-lg", ng-class="{'fa-expand': !$parent.data.expanded, \
-                                'fa-compress': $parent.data.expanded}")
-                            | {{$parent.data.shrinkgrowtext}}
+                                'fa-compress': $parent.data.expanded}", style="padding-left: 0.5rem")
 
                         button(type"button", class="btn btn-labeled btn-primary",
                             ng-click="onMapLinkrClicked()")
                             span(class="btn-label")
+                                | {{mldata.mapLinkrBtnText}}
                                 i(class="fa fa-expand fa-lg", ng-class="{'fa-expand': !mldata.isOpen, \
-                                'fa-compress': mldata.isOpen}")
-                            | {{mldata.mapLinkrBtnText}}
+                                'fa-compress': mldata.isOpen}", style="padding-left: 0.5rem")
 
                 div(class="row")
                     div(ng-controller="MapViewCtrl", id="MapViewCtrlId", class="col-sx-12")

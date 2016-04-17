@@ -1,7 +1,7 @@
 /* Styles go here */
 body {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 h3 {
@@ -10,6 +10,8 @@ h3 {
 
 .row {
   margin-bottom: 1rem;
+  margin-left: 0;
+  margin-right: 0;
 }
 .row .row {
   margin-top: 1rem;
@@ -28,4 +30,9 @@ h3 {
 hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+@media all and (max-width: 330px) {
+    .btn{font-size: 0.85rem;}
+    .modal{width: 400px;}
 }

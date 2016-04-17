@@ -7,9 +7,10 @@ mixin collapseGroup(groupId, cardId, groupname, heading)
                 data-target="#{cardId}", aria-expanded="false",
                 aria-controls="#{cardId}")
                 span(class="btn-label")
-                    i(class="fa fa-expand fa-lg", ng-class="{'fa-expand': mldata['#{groupname}'].isCollapsed, \
+                    | #{heading}
+                    i(class="fa fa-expand fa-lg", style="padding-left: 0.5rem",
+                    ng-class="{'fa-expand': mldata['#{groupname}'].isCollapsed, \
                     'fa-compress': !mldata['#{groupname}'].isCollapsed}")
-                | #{heading}
 
         div(id="#{cardId}", class="card-collapse collapse", role="tabpanel",
             uib-collapse="mldata['#{groupname}'].isCollapsed",
@@ -86,13 +87,14 @@ div(class="modeless col-sm-12 col-xs-12", id="idMapLinkrPlugin",
                                             div(class="card")
                                                 div(class="card-header", role="tab", id="destHeader{{key}}")
                                                     button(type="button", class="btn btn-labelled btn-primary", data-toggle="collapse",
-                                                        ng-click="onShowHideDestChoiceClicked(key)",
+                                                        ng-click="onShowHideDestChoiceClicked(key)", style="padding-left: 0.1rem;",
                                                         data-target="#destChoice{{key}}", aria-expanded="false",
                                                         aria-controls="destChoice{{key}}")
                                                         span(class="btn-label")
-                                                            i(class="fa fa-expand fa-lg", ng-class="{'fa-expand': mldata.using.current['{{key}}'], \
+                                                            | {{key}}
+                                                            i(class="fa fa-expand fa-lg", style="padding-left: 0.5rem",
+                                                            ng-class="{'fa-expand': mldata.using.current['{{key}}'], \
                                                             'fa-compress': !mldata.using.current['{{key}}']}")
-                                                        | Choice {{key}}
 
                                                     div(id="destChoice{{key}}", class="card-collapse in collapse", role="tabpanel",
                                                         uib-collapse="mldata.using.current['{{key}}']",
